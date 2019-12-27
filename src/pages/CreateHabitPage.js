@@ -90,7 +90,7 @@ function CreateHabit(props) {
     const createAHabit = async () => {
         let formDataJson = JSON.stringify(formData)
         let token = localStorage.getItem('token')
-        let getResponse = await fetch('http://127.0.0.1:8000/habits/create_habit',{method:'POST', mode: 'cors',body:formDataJson,
+        let getResponse = await fetch('http://shrouded-ravine-06737.herokuapp.com/habits/create_habit',{method:'POST', mode: 'cors',body:formDataJson,
         headers:{ Authorization: `JWT ${token}`,'Content-Type': 'application/json'}}
         );
         let jsonResponse = await getResponse.json()

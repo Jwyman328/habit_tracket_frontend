@@ -24,7 +24,7 @@ function SignUpPage(props) {
 
     const fetchLogin = async() => {
         let jsonUsername = JSON.stringify(usernamePassword)
-        let loginResponse = await fetch('http://127.0.0.1:8000/sign_up',{method:'POST', mode: 'cors',
+        let loginResponse = await fetch('http://shrouded-ravine-06737.herokuapp.com/sign_up',{method:'POST', mode: 'cors',
             body:jsonUsername, headers: {'Content-Type': 'application/json'}
         });
         let jsonResponse = await loginResponse.json()

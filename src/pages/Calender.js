@@ -41,7 +41,7 @@ function CalendarContainer(props){
         let token = localStorage.getItem('token')
         token? setToken(token): setToken(undefined)
         // make a fetch to site 
-        let fetchHabitsForDate = await fetch(`http://127.0.0.1:8000/habits/${year}/${month}/${day}/`,{
+        let fetchHabitsForDate = await fetch(`http://shrouded-ravine-06737.herokuapp.com/habits/${year}/${month}/${day}/`,{
             headers:{ Authorization: `JWT ${token}`}})
         let fetchHabitsForDateJson = await fetchHabitsForDate.json()
         setHabitData(fetchHabitsForDateJson)
@@ -57,7 +57,7 @@ function CalendarContainer(props){
         let day = dateClicked.getDate() 
         let token = localStorage.getItem('token')
         // make a fetch to site 
-        let fetchDailyHabitsForDate = await fetch(`http://127.0.0.1:8000/habits/daily_habits/${year}/${month}/${day}/`,{
+        let fetchDailyHabitsForDate = await fetch(`http://shrouded-ravine-06737.herokuapp.com/habits/daily_habits/${year}/${month}/${day}/`,{
             headers:{ Authorization: `JWT ${token}`}})
         let fetchDailyHabitsForDateJson = await fetchDailyHabitsForDate.json()
         setHabitDaily(fetchDailyHabitsForDateJson)
