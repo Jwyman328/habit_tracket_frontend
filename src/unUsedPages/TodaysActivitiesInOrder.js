@@ -6,19 +6,29 @@ import HabitCard from '../habit_components/HabitCard';
 
 import ActivityDisplayForOrderOfEvent from '../activity_components/ActivityDisplayForOrderOfEvent'
 
+/**
+ * 
+ * @var {Date} today the current date the user is on the app.
+ * @var {String} todayFormated the today variable in string form.
+ * @var {Date} date the date selected by the user, set to today's date to start.
+ * @var {String} dateFormated the selected date in string format.
+ * @var {Array} habitData all of the habits for the selected date.
+ * @var {Array} allTodaysActivities all of the activities done on the selected date.
+ * @var {}
+ */
 function TodaysActivitiesInOrder(){
     let today = new Date()
     let todayFormated = today.toDateString();
     const [date, setDate] = useState(today);
     const [dateFormated, setDateFormated] = useState(todayFormated)
     const [habitData, setHabitData] = useState(null);
-    let [habitDailyAndTotalData, setHabitDailyAndTotalData] = useState(null)
     let [habitDaily, setHabitDaily] = useState(null)
-    let [habitGeneral, setHabitGeneral] = useState([])
     let [allTodaysActivities, setAllTodaysActivities] = useState(null)
-    let habit_cards = undefined;
     let new_habit_cards = undefined
 
+    /**
+     * On mount fetch today's habit, and activity data.
+     */
     useEffect( () => {
         // on mount get and display the habits for today 
         fetch_date_habits(date)
@@ -27,6 +37,10 @@ function TodaysActivitiesInOrder(){
 
     },[])
 
+    /**
+     * Set AllTodaysActivities for the selected date.
+     * 
+     */
     const get_all_activities_for_today = async (dateClicked) => {
         let year = dateClicked.getFullYear()
         let month = dateClicked.getMonth() + 1 //js getMonth starts at 0
@@ -39,6 +53,9 @@ function TodaysActivitiesInOrder(){
         setAllTodaysActivities(fetchActivitiesForDateJson)
     }
 
+    /**
+     * Set the ongoing habits for the current date. 
+     */
     const fetch_date_habits = async (dateClicked) => {
         let year = dateClicked.getFullYear()
         let month = dateClicked.getMonth() + 1 //js getMonth starts at 0
@@ -51,6 +68,10 @@ function TodaysActivitiesInOrder(){
         setHabitData(fetchHabitsForDateJson)
     }
 
+    /**
+     * Set the on going 
+     * @param {Date} dateClicked  the date clicked by the user.
+     */
     const fetch_daily_habits = async (dateClicked) => {
         let year = dateClicked.getFullYear()
         let month = dateClicked.getMonth() + 1 //js getMonth starts at 0
@@ -60,10 +81,14 @@ function TodaysActivitiesInOrder(){
         let fetchDailyHabitsForDate = await fetch(`http://shrouded-ravine-06737.herokuapp.com/habits/daily_habits/${year}/${month}/${day}/`,{
             headers:{ Authorization: `JWT ${token}`}})
         let fetchDailyHabitsForDateJson = await fetchDailyHabitsForDate.json()
-        //setHabitDailyAndTotalData(fetchDailyHabitsForDateJson)
         setHabitDaily(fetchDailyHabitsForDateJson)
     }
 
+    /**
+     * Fetch all data related to the new date, when a new date is clicked.
+     * @param {Date} dateClicked  the date clicked by the user.
+     * 
+     */
     const click_date = (dateClicked)=> {
         setDate(dateClicked)
         let dateClickedFormated = dateClicked.toDateString()
@@ -75,7 +100,10 @@ function TodaysActivitiesInOrder(){
         get_all_activities_for_today(dateClicked)
          // then send that data to a component 
     }
-
+    
+    /**
+     * Create a card representing each current habit for the selected date.
+     */
     const show_new_habit_cards = () => {
             new_habit_cards = habitDaily.map((item) => {
 
@@ -105,7 +133,6 @@ function TodaysActivitiesInOrder(){
                 </Col>
             </Row>
             <h1> Habits for {dateFormated} </h1>
-            <Row> { /*habitDaily?  show_new_habit_cards(): <h1>doesnt exist</h1> */} </Row>
             <Row><Col>{allTodaysActivities? show_activity_cards(): null} </Col> </Row>
         </Container>
 

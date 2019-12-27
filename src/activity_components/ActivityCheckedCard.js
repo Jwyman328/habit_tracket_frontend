@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import { Card } from 'react-bootstrap';
 
 
-
 function ActivityChecked(props) {
     const [displayStartTime, setDisplayStartTime] = useState(undefined)
     const [displayEndTime, setDisplayEndTime] = useState(undefined)
