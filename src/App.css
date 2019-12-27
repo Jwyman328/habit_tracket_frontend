@@ -1,0 +1,80 @@
+.App {
+  text-align: center;
+  background-color: #ffa494 ;
+}
+
+.App-logo {
+  height: 40vmin;
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #09d3ac;
+}
+
+.centerItem {
+  text-align: center;
+  margin: auto;
+}
+
+.calender {
+  width: 100%;
+  height: 100%;
+}
+
+.greenTitle {
+  color:black;
+}
+
+.redTitle {
+  color:black;
+}
+
+.greenCard {
+  background-color: #47ff63;
+}
+
+.redCard {
+  background-color: #ff6633; 
+}
+
+.timetable {
+  background-color: lightgrey;
+}
+
+.cardText {
+  color: black;
+}
+
+.timeCard {
+  background-color: lightblue;
+}
+
+.timedBackground {
+  background-color: #47ffbf;
+}
+
+.checkedBackground {
+  background-color: #47e3ff ;
+}
+
+hr {
+  border: 0;
+  margin: 0;
+  padding-bottom:0 ;
+  clear:both;
+  display: block;
+  width: 100%;               
+  background-color:red;
+  height: 1px;
+}
