@@ -22,7 +22,7 @@ function LoginPage(props) {
 
     const fetchLogin = async() => {
         let jsonUsername = JSON.stringify(usernamePassword)
-        let loginResponse = await fetch('http://shrouded-ravine-06737.herokuapp.com/sign_in',{method:'POST', mode: 'cors',
+        let loginResponse = await fetch('http://shrouded-ravine-06737.herokuapp.com/sign_in',{method:'POST', mode: 'no-cors',
             body:jsonUsername, headers: {'Content-Type': 'application/json'}
         });
         let jsonResponse = await loginResponse.json()
