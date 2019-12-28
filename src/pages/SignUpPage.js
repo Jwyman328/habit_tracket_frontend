@@ -16,7 +16,6 @@ function SignUpPage(props) {
     const inputChangeHandler = (e)=> {
         let name = e.target.name
         let value = e.target.value 
-
         let newUsernamePassword = {...usernamePassword}
         newUsernamePassword[name] = value
         setUsernamePassword(newUsernamePassword)
@@ -26,7 +25,7 @@ function SignUpPage(props) {
         let jsonUsername = JSON.stringify(usernamePassword)
         let loginResponse = await fetch('http://shrouded-ravine-06737.herokuapp.com/sign_up',{method:'POST', mode: 'cors',
             body:jsonUsername, headers: {'Content-Type': 'application/json'}
-        });
+        }); 
         let jsonResponse = await loginResponse.json()
         //add token to local storage and use for requests
         const token = jsonResponse.token
