@@ -48,7 +48,7 @@ function SignUpPage(props) {
                 <br></br>
                 <label>Password <input onChange={inputChangeHandler}  type='password' name='password'/> </label>
                 <br></br>
-                <Button onSubmit={handleSubmit}> Submit </Button>
+                <Button onClick={handleSubmit}> Submit </Button>
 
             </form>
             {props.loggedIn?<Redirect to='/home' />:null}
