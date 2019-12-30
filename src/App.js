@@ -5,7 +5,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 import LoginPage from './pages/LogInPage'
 import SignUpPage from './pages/SignUpPage'
-import HomePage from './pages/HomePage'
+import HomePage from './unUsedPages/HomePage'
 import CreateHabit from './pages/CreateHabitPage'
 import DailyTimedCreateActivity from './pages/Habit_activity_data_pages/DailyTimedCreateActivity'
 import TotalCheckedCreateActivity from './pages/Habit_activity_data_pages/TotalCheckedCreateActivity'
@@ -41,7 +41,7 @@ function App() {
         <Switch>
           <Route path='/login'> <LoginPage logIn = {logIn} loggedIn={loggedIn} /></Route>
           <Route path='/signup'> <SignUpPage logIn = {logIn} loggedIn={loggedIn} /> </Route>
-          <Route path='/home'> <HomePage loggedIn={loggedIn}  /> </Route>
+          {/*<Route path='/home'> <HomePage loggedIn={loggedIn}  /> </Route> */}
           <Route path='/create_habit'> <CreateHabit loggedIn={loggedIn}  /> </Route>
           <Route path='/habits/:id/activities/:daily_id/totalchecked/:month/:day/:year/'> <TotalCheckedCreateActivity loggedIn={loggedIn}  /> </Route> 
           <Route path='/habits/:id/activities/:daily_id/totaltimed/:month/:day/:year/'> <TotalTimedCreateActivity loggedIn={loggedIn}  /></Route> 

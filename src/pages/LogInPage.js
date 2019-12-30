@@ -56,7 +56,7 @@ function LoginPage(props) {
                 <br></br>
                 <Button onClick={handleSubmit}> Log In </Button>
             </form>
-            {props.loggedIn?<Redirect to='/home' />:null}
+            {props.loggedIn?<Redirect to='/calender/' />:null}
         </div>
     )
 }

@@ -23,7 +23,7 @@ function NavBar(props) {
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="mr-auto">
-                    {props.loggedIn?<Link to='/home' className="nav-link"> Home </Link>: null}
+                    {/*props.loggedIn?<Link to='/home' className="nav-link"> Home </Link>: null*/} 
                     {props.loggedIn? undefined : <Link to='/login' className="nav-link"> <li> Login</li> </Link>}
                     {props.loggedIn? undefined: <Link to='/signup' className="nav-link"> <li> SignUp</li> </Link>}
                     {props.loggedIn?<Link to='/create_habit' className="nav-link"> <li> Create Habit</li> </Link>: null}

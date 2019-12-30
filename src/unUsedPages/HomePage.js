@@ -10,7 +10,6 @@ function HomePage(props) {
             <h1>Homepage</h1>
             {props.loggedIn?null: <Redirect to='/login'/>}
             <h1> home </h1>
-
         </div>
     )
 }
