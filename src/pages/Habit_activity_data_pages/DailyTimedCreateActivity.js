@@ -2,12 +2,12 @@ import React, {useState, useEffect} from 'react';
 import PropTypes from 'prop-types';
 import {Redirect,useRouteMatch} from 'react-router-dom';
 
-import ActivityTimed from './ActivityTimedCard';
+import ActivityTimed from '../../activity_components/ActivityTimedCard';
 
 import {  Container, Row, Col, Card } from 'react-bootstrap';
 import { Button } from 'react-bootstrap';
 
-import PieGraph from '../general_components/ChartPie';
+import PieGraph from '../../general_components/ChartPie';
 
 // has start button and stop button 
 // start button posts a new activity with habit id, start time of when clicked, end_time=blank

@@ -16,7 +16,9 @@ import HabitCard from '../habit_components/HabitCard';
  * @var {Array} habitData - habit data for all habits of the selected date.
  * @var {Array} habitDaily - habit data for all daily habits of the selected date.
  * @var {Array} habit_cards - array of habit data as readable display cards.
+ * @var {String} token - user's jwt token .
  */
+
 function CalendarContainer(props) {
     let today = new Date()
     let todayFormated = today.toDateString();
@@ -25,7 +27,6 @@ function CalendarContainer(props) {
     const [habitData, setHabitData] = useState(null);
     let [habitDaily, setHabitDaily] = useState(null)
     let habit_cards = undefined
-
     let [token, setToken] = useState(undefined)
 
     /**
@@ -34,7 +35,6 @@ function CalendarContainer(props) {
     useEffect(() => {
         fetch_date_habits(date)
         fetch_daily_habits(date)
-
     }, [])
 
     /**

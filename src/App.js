@@ -7,10 +7,10 @@ import LoginPage from './pages/LogInPage'
 import SignUpPage from './pages/SignUpPage'
 import HomePage from './pages/HomePage'
 import CreateHabit from './pages/CreateHabitPage'
-import DailyTimedCreateActivity from './activity_components/DailyTimedCreateActivity'
-import TotalCheckedCreateActivity from './activity_components/TotalCheckedCreateActivity'
-import TotalTimedCreateActivity from './activity_components/TotalTimedCreateActivity'
-import DailyCheckCreateActivity from './activity_components/DailyCheckCreateActivity'
+import DailyTimedCreateActivity from './pages/Habit_activity_data_pages/DailyTimedCreateActivity'
+import TotalCheckedCreateActivity from './pages/Habit_activity_data_pages/TotalCheckedCreateActivity'
+import TotalTimedCreateActivity from './pages/Habit_activity_data_pages/TotalTimedCreateActivity'
+import DailyCheckCreateActivity from './pages/Habit_activity_data_pages/DailyCheckCreateActivity'
 import NavBar from './general_components/NavBar'
 import CalendarContainer from './pages/Calender'
 import DayTimeTable from './pages/DayTimetable';
@@ -46,7 +46,7 @@ function App() {
           <Route path='/habits/:id/activities/:daily_id/totalchecked/:month/:day/:year/'> <TotalCheckedCreateActivity loggedIn={loggedIn}  /> </Route> 
           <Route path='/habits/:id/activities/:daily_id/totaltimed/:month/:day/:year/'> <TotalTimedCreateActivity loggedIn={loggedIn}  /></Route> 
           <Route path='/habits/:id/activities/:daily_id/dailytimed/:month/:day/:year/'> <DailyTimedCreateActivity loggedIn={loggedIn} /> </Route> 
-          <Route path='/habits/:id/activities/:daily_id/dailychecked/:month/:day/:year/'><DailyCheckCreateActivity loggedIn={loggedIn}  /> </Route> {/* <CreateActivity />      */}
+          <Route path='/habits/:id/activities/:daily_id/dailychecked/:month/:day/:year/'><DailyCheckCreateActivity loggedIn={loggedIn}  /> </Route> 
           <Route path='/calender/'> <CalendarContainer loggedIn={loggedIn}  /> </Route>
           <Route path='/DayTimeTable/'> <DayTimeTable loggedIn={loggedIn}  /> </Route>
         </Switch>
