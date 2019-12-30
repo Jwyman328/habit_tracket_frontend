@@ -11,6 +11,17 @@ import { Button, Card } from 'react-bootstrap';
 
 import PieChart from '../../general_components/ChartPie';
 
+/**
+ * 
+ * @param {Bool} props.loggedIn - Representing if the user is considered logged in or out. 
+ * @var {Array} activityComponents - Array of cards displaying each individual activity and its data.
+ * @var {Array} activity_data - Array of objects containing data for all the activities for the selected habit.
+ * @var {Object} habitData - Object containing data for the selected habit.
+ * @var {Date} habitActivityDate - Date of the selected habit.
+ * @var {Bool} allowAtivityCreation - Boolean representing if the habit activity date is set in order to start displaying data.
+ * @var {Number} totalAccumulatedTimeHours - The amount of total habit activity hours completed.
+ * @var {Number} totalAccumulatedTimeMinutes - The amount of total habit activity minutes completed.
+ */
 
 function DailyTimedCreateActivity(props) {
     let match = useRouteMatch();
@@ -96,16 +107,12 @@ function DailyTimedCreateActivity(props) {
         // figure out which activity id i am dealing with 
         // should have a box(components) of current activities, and a box of create new activity 
         // make a put call here 
-        // to 'activities/update/<int:activity_id>/<int:year>/<int:month>/<int:day>/<int:hr>/<int:minute>/'
         let now = new Date()
         let [year, month, day] = formatDateMMYYDD(now)
         let hours = now.getHours()
         let minutes = now.getMinutes()
         let seconds = now.getSeconds()
         
-
-        //let post_data_formated = {habit_id:habitData.id, start_time:now, end_time:end_time_value, total_time: null} //record time it was done 
-        //let postDataJson = JSON.stringify(post_data_formated)
         let token = localStorage.getItem('token')
         let putResponse = await fetch(`http://shrouded-ravine-06737.herokuapp.com/habits/activities/update/${activity_id}/${year}/${month}/${day}/${hours}/${minutes}/${seconds}/`,{method:'PUT', mode: 'cors', //body:postDataJson
         headers:{ Authorization: `JWT ${token}`,'Content-Type': 'application/json'}});

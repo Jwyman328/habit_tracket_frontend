@@ -1,6 +1,6 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import {Redirect,useRouteMatch} from 'react-router-dom';
+import { Redirect, useRouteMatch } from 'react-router-dom';
 
 import ActivityChecked from '../../activity_components/ActivityCheckedCard';
 import ActivityTimed from '../../activity_components/ActivityTimedCard';
@@ -15,18 +15,26 @@ import PieChart from '../../general_components/ChartPie';
 //total_time blank 
 
 // stop button sends a update with activity id, and stop time 
-
+/**
+ * 
+ * @param {Bool} props.loggedIn - Representing if the user is considered logged in or out.
+ * @var {Array} activityComponents - Array of cards displaying each individual activity and its data.
+ * @var {Array} activity_data - Array of objects containing data for all the activities for the selected habit.
+ * @var {Object} habitData - Object containing data for the selected habit.
+ * @var {Date} habitActivityDate - Date of the selected habit.
+ * @var {Bool} allowAtivityCreation - Boolean representing if the habit activity date is set in order to start displaying data.
+ */
 function TotalCheckedCreateActivity(props) {
     let match = useRouteMatch();
     let habitID = match.params.id // use this param to ask for this habit and create activities with it 
     let habitYear = match.params.year
-    let habitMonth = match.params.month 
+    let habitMonth = match.params.month
     let habitDay = match.params.day
 
     let activityComponents = undefined
 
     let [activity_data, setActivityData] = useState(undefined)
-    let [habitData, setHabitData] = useState({type_of_habit:''})
+    let [habitData, setHabitData] = useState({ type_of_habit: '' })
     let [habitActivityDate, setHabitActivityDate] = useState(undefined)
     let [allowAtivityCreation, setAllowAtivityCreation] = useState(undefined) // only allow if today is same as habitActivityDate 
     //'<int:habit_id>/<int:year>/<int:month>/<int:day>' 
@@ -34,18 +42,19 @@ function TotalCheckedCreateActivity(props) {
 
     // pass habit data 
     // go get the habit so i have its data 
-    const get_individual_habit = async(id) => {
+    const get_individual_habit = async (id) => {
         let token = localStorage.getItem('token')
-        let getResponse = await fetch(`http://shrouded-ravine-06737.herokuapp.com/habits/${id}/`,{
-        headers:{ Authorization: `JWT ${token}`}}
+        let getResponse = await fetch(`http://shrouded-ravine-06737.herokuapp.com/habits/${id}/`, {
+            headers: { Authorization: `JWT ${token}` }
+        }
         );
         let jsonResponse = await getResponse.json()
         // set data to state 
         setHabitData(jsonResponse)
     }
-    useEffect( () => {
+    useEffect(() => {
         get_individual_habit(habitID)
-        let habitActivityDateValue = new Date(habitYear,habitMonth -1, habitDay)
+        let habitActivityDateValue = new Date(habitYear, habitMonth - 1, habitDay)
         setHabitActivityDate(habitActivityDateValue)
         get_habits_activites_for_date_selected()
 
@@ -54,14 +63,14 @@ function TotalCheckedCreateActivity(props) {
         let today = new Date().toDateString()
         let habit_dateString = habitActivityDateValue.toDateString()
 
-        if (today == habit_dateString){
+        if (today == habit_dateString) {
             setAllowAtivityCreation(true)
-        }else{
+        } else {
             setAllowAtivityCreation(false)
         }
     }, [])
 
-    useEffect( ()=> {
+    useEffect(() => {
         // fetch this individual habits data 
         // if habit data hasnt loaded then go get it 
 
@@ -69,19 +78,21 @@ function TotalCheckedCreateActivity(props) {
         get_individual_habit(habitID)
         //get_habits_activites_for_date_selected() // maybe too 
 
-    },[activity_data]) //activity_data
+    }, [activity_data]) //activity_data
 
     const createActivity = async () => {
         // create a checked activity or start a timed activity 
         let now = new Date()
         let end_time_value = undefined
         //end time will vary depending on if it is checked or time 
-        
-        let post_data_formated = {habit_id:habitData.id, start_time:now, end_time:end_time_value, total_time: null} //record time it was done 
+
+        let post_data_formated = { habit_id: habitData.id, start_time: now, end_time: end_time_value, total_time: null } //record time it was done 
         let postDataJson = JSON.stringify(post_data_formated)
         let token = localStorage.getItem('token')
-        let getResponse = await fetch('http://shrouded-ravine-06737.herokuapp.com/habits/create_activity',{method:'POST', mode: 'cors',body:postDataJson,
-        headers:{ Authorization: `JWT ${token}`,'Content-Type': 'application/json'}}
+        let getResponse = await fetch('http://shrouded-ravine-06737.herokuapp.com/habits/create_activity', {
+            method: 'POST', mode: 'cors', body: postDataJson,
+            headers: { Authorization: `JWT ${token}`, 'Content-Type': 'application/json' }
+        }
         );
         let jsonResponse = await getResponse.json()
         // since the activities were changed, rerender the data 
@@ -99,33 +110,34 @@ function TotalCheckedCreateActivity(props) {
             month = '' + (d.getMonth() + 1),
             day = '' + d.getDate(),
             year = d.getFullYear();
-    
-        if (month.length < 2) 
+
+        if (month.length < 2)
             month = '0' + month;
-        if (day.length < 2) 
+        if (day.length < 2)
             day = '0' + day;
-    
-        return [year, month, day];//.join('-')
+
+        return [year, month, day];
     }
 
-    function formatTimedAmountAccumulated(timeAsString){
-       if (timeAsString){
-        let [hours,minutes,rest] =  timeAsString.split(':')
-        return[hours,minutes]
-       }
+    function formatTimedAmountAccumulated(timeAsString) {
+        if (timeAsString) {
+            let [hours, minutes, rest] = timeAsString.split(':')
+            return [hours, minutes]
+        }
 
     }
 
-    const get_habits_activites_for_date_selected = async() =>{
+    const get_habits_activites_for_date_selected = async () => {
         // in real site thise date would be whatever this
         //pages date is props.dateClicked
 
         // change this to be a state variable 
         let token = localStorage.getItem('token')
         // make a fetch to site 
-        
-        let fetchHabitDateActivities = await fetch(`http://shrouded-ravine-06737.herokuapp.com/habits/${habitID}/activities/${habitYear}/${habitMonth}/${habitDay}/`,{
-            headers:{ Authorization: `JWT ${token}`}})
+
+        let fetchHabitDateActivities = await fetch(`http://shrouded-ravine-06737.herokuapp.com/habits/${habitID}/activities/${habitYear}/${habitMonth}/${habitDay}/`, {
+            headers: { Authorization: `JWT ${token}` }
+        })
         let fetchHabitDateActivitiesJson = await fetchHabitDateActivities.json()
         setActivityData(fetchHabitDateActivitiesJson)
 
@@ -145,42 +157,42 @@ function TotalCheckedCreateActivity(props) {
         //show text for how much has already been completed
         return habit_text
     }
-    
+
     return (
         <div>
             <Container>
-            {props.loggedIn?null: <Redirect to='/login'/>}
+                {props.loggedIn ? null : <Redirect to='/login' />}
                 <Row>
-                
+
                     <Col>
                         <Card style={{ width: '100%' }}>
-                            <Card.Body className={habitData? habitData.completed? 'greenCard': 'redCard':null}>
+                            <Card.Body className={habitData ? habitData.completed ? 'greenCard' : 'redCard' : null}>
                                 {/*make sure data loaded*/}
 
-                                <Card.Subtitle className="mb-4 align-text-left  d-flex "> {habitData? <h5 className= { habitData.completed? 'greenTitle': 'redTitle'}>Habit:{habitData.title}</h5>:null}</Card.Subtitle>
-                                <Card.Subtitle className="mb-4 align-text-left  d-flex"> {habitActivityDate?<h5> Date: {habitActivityDate.toDateString()} </h5>:null} </Card.Subtitle>
-                                <Card.Subtitle className="mb-4 align-text-left  d-flex"> {habitData? goal_information():null}</Card.Subtitle>
-                                <Card.Subtitle className="mb-4 align-text-left  d-flex">{habitData? <h5> Completed: {habitData.current_times_activity_done} times </h5>:null} </Card.Subtitle>
-                                { allowAtivityCreation?
-                                <div class='timed'> <Button style={{ width: '100%'} } className="mb-4 align-text-left  d-flex btn btn-success" onClick={createOrStartActivity}> Do Activity </Button><br></br></div>:null}
+                                <Card.Subtitle className="mb-4 align-text-left  d-flex "> {habitData ? <h5 className={habitData.completed ? 'greenTitle' : 'redTitle'}>Habit:{habitData.title}</h5> : null}</Card.Subtitle>
+                                <Card.Subtitle className="mb-4 align-text-left  d-flex"> {habitActivityDate ? <h5> Date: {habitActivityDate.toDateString()} </h5> : null} </Card.Subtitle>
+                                <Card.Subtitle className="mb-4 align-text-left  d-flex"> {habitData ? goal_information() : null}</Card.Subtitle>
+                                <Card.Subtitle className="mb-4 align-text-left  d-flex">{habitData ? <h5> Completed: {habitData.current_times_activity_done} times </h5> : null} </Card.Subtitle>
+                                {allowAtivityCreation ?
+                                    <div class='timed'> <Button style={{ width: '100%' }} className="mb-4 align-text-left  d-flex btn btn-success" onClick={createOrStartActivity}> Do Activity </Button><br></br></div> : null}
                                 {/* base for a component that will store an activity for a habit of today, so i need to make a fetch call for a  get todays activities for this habit  */}
                                 {/* if the activity data exists then make the activity component   */}
                                 <Row>
-                                    {activity_data ? create_activityComponents():null }
+                                    {activity_data ? create_activityComponents() : null}
                                     {/*if the activity components have been made i can display the components */}
-                                    {activityComponents?activityComponents: null}
+                                    {activityComponents ? activityComponents : null}
                                 </Row>
                             </Card.Body>
- 
+
                         </Card>
                     </Col>
-                   
+
                 </Row>
-                {habitData.current_times_activity_done && habitData.goal_amount? <PieChart title={habitData.title} completed={habitData.current_times_activity_done} total={habitData.goal_amount} />: null }
+                {habitData.current_times_activity_done && habitData.goal_amount ? <PieChart title={habitData.title} completed={habitData.current_times_activity_done} total={habitData.goal_amount} /> : null}
 
             </Container>
         </div>
-       
+
     )
 }
 
