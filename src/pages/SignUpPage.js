@@ -21,6 +21,12 @@ function SignUpPage(props) {
         setUsernamePassword(newUsernamePassword)
     }
 
+    /**
+     * Send a post request with the entered username and password to create a new user.
+     * 
+     * When the username/password is accepted set the jwt token to local storage
+     * allowing the user to enter into the app.
+     */
     const fetchLogin = async() => {
         let jsonUsername = JSON.stringify(usernamePassword)
         let loginResponse = await fetch('http://shrouded-ravine-06737.herokuapp.com/sign_up',{method:'POST', mode: 'cors',
