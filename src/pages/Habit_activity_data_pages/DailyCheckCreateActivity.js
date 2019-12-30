@@ -14,7 +14,16 @@ import PieChart from '../../general_components/ChartPie';
 //total_time blank 
 
 // stop button sends a update with activity id, and stop time 
-
+/**
+ * 
+ * @param {Bool} props.loggedIn - Representing if the user is considered logged in or out.
+ * @var {Array} activityComponents - Array of cards displaying each individual activity and its data.
+ * @var {Array} activity_data - Array of objects containing data for all the activities for the selected habit.
+ * @var {Object} habitData - Object containing data for the selected habit.
+ * @var {Date} habitActivityDate - Date of the selected habit.
+ * @var {Bool} allowAtivityCreation - Boolean representing if the habit activity date is set in order to start displaying data.
+ * @var {Object} totalAccumulatedForDate - Object containing accumulated time and count for the Daily habit.
+ */
 function DailyCheckCreateActivity(props) {
     let match = useRouteMatch();
     let habitID = match.params.id // use this param to ask for this habit and create activities with it 
@@ -24,12 +33,11 @@ function DailyCheckCreateActivity(props) {
     let dailyHabitId = match.params.daily_id
 
     let activityComponents = undefined
-
     let [activity_data, setActivityData] = useState(undefined)
     let [habitData, setHabitData] = useState({type_of_habit:''})
     let [dailyHabitData, setDailyHabitData] = useState(null)
     let [habitActivityDate, setHabitActivityDate] = useState(undefined)
-    let [allowAtivityCreation, setAllowAtivityCreation] = useState(undefined) // only allow if today is same as habitActivityDate 
+    let [allowAtivityCreation, setAllowAtivityCreation] = useState(undefined) 
     let [totalAccumulatedForDate, setTotalAccumulatedForDate] = useState({accumulated_time:undefined,accumulated_count:undefined})
 
     //'<int:habit_id>/<int:year>/<int:month>/<int:day>' 
@@ -40,7 +48,6 @@ function DailyCheckCreateActivity(props) {
         headers:{ Authorization: `JWT ${token}`}}
         );
         let jsonResponse = await getResponse.json()
-        // set data to state 
         setDailyHabitData(jsonResponse)
     }
 
@@ -50,7 +57,6 @@ function DailyCheckCreateActivity(props) {
         headers:{ Authorization: `JWT ${token}`}}
         );
         let jsonResponse = await getResponse.json()
-        // set data to state 
         setTotalAccumulatedForDate(jsonResponse)
     }
 
@@ -62,7 +68,6 @@ function DailyCheckCreateActivity(props) {
         headers:{ Authorization: `JWT ${token}`}}
         );
         let jsonResponse = await getResponse.json()
-        // set data to state 
         setHabitData(jsonResponse)
     }
     useEffect( () => {
@@ -180,7 +185,6 @@ function DailyCheckCreateActivity(props) {
                             <Card.Body className={habitData && dailyHabitData? habitData.type_of_goal =='total'? habitData.completed? 'greenCard': 'redCard': dailyHabitData.completed? 'greenCard': 'redCard': null} >
                                 
                                 {/*make sure data loaded*/}
-
                                 <Card.Subtitle className="mb-4  align-text-left  d-flex ">{habitData && dailyHabitData ?<h5 className={habitData.type_of_goal =='total'? habitData.completed? 'greenTitle': 'redTitle': dailyHabitData.completed? 'greenTitle': 'redTitle'}> Habit: {habitData.title}</h5>:null} {/*make sure data loaded*/}</Card.Subtitle>
                                 <Card.Subtitle className="mb-4  align-text-left  d-flex"> {habitActivityDate?<h5> Date: {habitActivityDate.toDateString()} </h5>:null} </Card.Subtitle>
                                 <Card.Subtitle className="mb-4  align-text-left  d-flex">{habitData? goal_information():null}</Card.Subtitle>
