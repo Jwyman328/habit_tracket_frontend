@@ -16,7 +16,9 @@ import Calendar from 'react-calendar';
  * @var {Number} firstTimedEventMinutes - the amount of minutes from the first hour that the first timed event starts. Ej. 36, if first event time is 9:36.
  * @var {Number} lastTimedEventMinutes - the amount of minutes from the last hour to the last timed event. Ej. 24, if last event time is 9:36.
  * @var {Number} firstEventMinutes - the amount of minutes from the first hour that the first event(any type) starts. Ej. 36, if first event time is 9:36.
- * @var {Array} allTodaysActivities - Array of objects containing all timed 
+ * @var {Array} allTodaysActivities - Array of objects containing all timed.
+ * @var {Array} timeRows - Array of cards representing 30 minutes blocks of time spaning all user activities.
+ * @var {Array} eventRows - Array of cards representing an activies length of time.
  * 
  */
 function DayTimeTable(props) {
