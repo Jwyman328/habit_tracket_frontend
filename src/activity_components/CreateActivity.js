@@ -127,9 +127,6 @@ function CreateActivity(props) {
         let minutes = now.getMinutes()
         let seconds = now.getSeconds()
         
-
-        //let post_data_formated = {habit_id:habitData.id, start_time:now, end_time:end_time_value, total_time: null} //record time it was done 
-        //let postDataJson = JSON.stringify(post_data_formated)
         let token = localStorage.getItem('token')
         let putResponse = await fetch(`http://shrouded-ravine-06737.herokuapp.com/habits/activities/update/${activity_id}/${year}/${month}/${day}/${hours}/${minutes}/${seconds}/`,{method:'PUT', mode: 'cors', //body:postDataJson
         headers:{ Authorization: `JWT ${token}`,'Content-Type': 'application/json'}});

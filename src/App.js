@@ -30,7 +30,7 @@ function App() {
     setLogIn(false)
   }
   return (
-    <div className="App">
+    <div className="App" style={{height:'100%'}}>
       <link
       rel="stylesheet"
       href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"

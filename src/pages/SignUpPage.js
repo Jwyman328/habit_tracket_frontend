@@ -46,16 +46,14 @@ function SignUpPage(props) {
         fetchLogin()
     }
     return (
-        <div>
+        <div style={{'background-color': '#ffa494', height:800}}>
             <h1>Sign Up</h1>
-
             <form onSubmit={handleSubmit}>
                 <label>Username <input onChange={inputChangeHandler} type='text' name='username'/> </label>
                 <br></br>
                 <label>Password <input onChange={inputChangeHandler}  type='password' name='password'/> </label>
                 <br></br>
-                <Button onClick={handleSubmit}> Submit </Button>
-
+                <Button onClick={handleSubmit}> Sign up </Button>
             </form>
             {props.loggedIn?<Redirect to='/home' />:null}
         </div>

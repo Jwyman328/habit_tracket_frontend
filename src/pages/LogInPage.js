@@ -2,6 +2,8 @@ import React, {useState} from 'react';
 import PropTypes from 'prop-types';
 import {Redirect} from 'react-router-dom';
 import { Button } from 'react-bootstrap';
+//import '../App.css';
+
 
 /**
  * Allow a current user to login, by sending username, password and jwt token to DRF for authentication.
@@ -44,7 +46,7 @@ function LoginPage(props) {
         fetchLogin()
     }
     return (
-        <div>
+        <div style={{'background-color': '#ffa494', height:800}}>
             <h1>Login</h1>
 
             <form onSubmit={handleSubmit}>
@@ -52,7 +54,7 @@ function LoginPage(props) {
                 <br></br>
                 <label>Password <input onChange={inputChangeHandler}  type='password' name='password'/> </label>
                 <br></br>
-                <Button onClick={handleSubmit}> Submit </Button>
+                <Button onClick={handleSubmit}> Log In </Button>
             </form>
             {props.loggedIn?<Redirect to='/home' />:null}
         </div>

@@ -25,13 +25,15 @@ import PieChart from '../../general_components/ChartPie';
  * @var {Object} totalAccumulatedForDate - Object containing accumulated time and count for the Daily habit.
  */
 function DailyCheckCreateActivity(props) {
+    // variables for making api calls to gather data
     let match = useRouteMatch();
     let habitID = match.params.id // use this param to ask for this habit and create activities with it 
     let habitYear = match.params.year
     let habitMonth = match.params.month 
     let habitDay = match.params.day
     let dailyHabitId = match.params.daily_id
-
+    
+    // variables for displaying data
     let activityComponents = undefined
     let [activity_data, setActivityData] = useState(undefined)
     let [habitData, setHabitData] = useState({type_of_habit:''})
