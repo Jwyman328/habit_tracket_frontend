@@ -9,6 +9,15 @@ import Calendar from 'react-calendar';
 /**
  * show a column of times and a corresponding column of checked and timed activities spanning their total time for a specific date.
  * @param {Bool} props.loggedIn - Representing if the user is considered logged in or out. 
+ * @var {Date}  today - the current date.
+ * @var {String} todayFormated - the current date formatted as a readable string value.
+ * @var {String} dateFormated - the user selected date as a readable string value.
+ * @var {Date} date - the user selected date as a Date value.
+ * @var {Number} firstTimedEventMinutes - the amount of minutes from the first hour that the first timed event starts. Ej. 36, if first event time is 9:36.
+ * @var {Number} lastTimedEventMinutes - the amount of minutes from the last hour to the last timed event. Ej. 24, if last event time is 9:36.
+ * @var {Number} firstEventMinutes - the amount of minutes from the first hour that the first event(any type) starts. Ej. 36, if first event time is 9:36.
+ * @var {Array} allTodaysActivities - Array of objects containing all timed 
+ * 
  */
 function DayTimeTable(props) {
     let today = new Date()
@@ -17,10 +26,8 @@ function DayTimeTable(props) {
     const [date, setDate] = useState(today);
     let [firstTimedEventMinutes, setfirstTimedEventMinutes] = useState(undefined)
     let [lastTimedEventMinutes, setlastTimedEventMinutes] = useState(undefined)
-    let [firstCheckedEventMinutes, setfirstCheckedEventMinutes] = useState(undefined)
-    let [lastCheckedEventMinutes, setlastCheckedEventMinutes] = useState(undefined)
     let [firstEventMinutes, setfirstEventMinutes] = useState(undefined)
-    let [allTodaysTimedActivities, setAllTodaysTimedActivities] = useState(undefined)
+    let [allTodaysActivities, setallTodaysActivities] = useState(undefined)
     let [timeRows, setTimeRows] = useState(undefined)
     let [eventRows, setEventRows] = useState(undefined)
 
@@ -38,7 +45,7 @@ function DayTimeTable(props) {
             headers:{ Authorization: `JWT ${token}`}})
         let fetchActivitiesForDateJson = await fetchActivitiesForDate.json()
         fetchActivitiesForDateJson = fetchActivitiesForDateJson.length === 0? undefined: fetchActivitiesForDateJson
-        setAllTodaysTimedActivities(fetchActivitiesForDateJson)
+        setallTodaysActivities(fetchActivitiesForDateJson)
     }
 
     /**
@@ -88,12 +95,12 @@ function DayTimeTable(props) {
      */
     const generate_time_column = () =>{
         // only get events that have been completed, aka have a total time
-        let firstTimedEventStartTime = allTodaysTimedActivities[allTodaysTimedActivities.length -1].start_time
+        let firstTimedEventStartTime = allTodaysActivities[allTodaysActivities.length -1].start_time
         //latest timed event 
-        let lastTimedEventEndTime = allTodaysTimedActivities[0].end_time? allTodaysTimedActivities[0].end_time: allTodaysTimedActivities[0].start_time
+        let lastTimedEventEndTime = allTodaysActivities[0].end_time? allTodaysActivities[0].end_time: allTodaysActivities[0].start_time
         let [first_hour,first_minutes] = get_hours_minutes(firstTimedEventStartTime)
         setfirstTimedEventMinutes(first_minutes)
-        let [last_hour,last_minutes] = lastTimedEventEndTime? get_hours_minutes(lastTimedEventEndTime): get_hours_minutes(allTodaysTimedActivities[0].start_time)
+        let [last_hour,last_minutes] = lastTimedEventEndTime? get_hours_minutes(lastTimedEventEndTime): get_hours_minutes(allTodaysActivities[0].start_time)
         setlastTimedEventMinutes(last_minutes)
 
         //get all hours in a list [9,10,11], aka total number of time rows to have
@@ -160,7 +167,7 @@ function DayTimeTable(props) {
             return minutes
         }
 
-        let row_heights = allTodaysTimedActivities.map((activity, index) => {
+        let row_heights = allTodaysActivities.map((activity, index) => {
             let activityData = [{activityHeight:undefined,activityStartTime:formatDateTimetoTime(activity.start_time),
                 activityEndTime:formatDateTimetoTime(activity.end_time), activityTitle:activity.title, activityTypeOfHabit: activity.type_of_habit }];
                 // use to create height rem, if a checked activity set it to ten minutes 
@@ -169,7 +176,7 @@ function DayTimeTable(props) {
                 activityData[0].activityHeight = generate_height(minutes)
                 // get this item start time
                 let start_time = activity.start_time
-                let previous_end_time = allTodaysTimedActivities[index + 1]? allTodaysTimedActivities[index + 1].end_time: undefined
+                let previous_end_time = allTodaysActivities[index + 1]? allTodaysActivities[index + 1].end_time: undefined
 
                 if (previous_end_time) {
                     let endMiliSeconds = Date.parse(previous_end_time)
@@ -229,14 +236,14 @@ function DayTimeTable(props) {
      * When timed activities change, update the time column.
      */
     useEffect(() => {
-        if (allTodaysTimedActivities){
+        if (allTodaysActivities){
             let NewtimeRows = generate_time_column()
             setTimeRows(NewtimeRows)
         }else{
             setTimeRows(undefined)
             setEventRows(undefined)
         }
-    },[allTodaysTimedActivities])
+    },[allTodaysActivities])
 
     /**
      * when the time rows change, update the event column.

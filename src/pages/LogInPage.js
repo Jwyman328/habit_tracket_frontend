@@ -20,6 +20,11 @@ function LoginPage(props) {
         setUsernamePassword(newUsernamePassword)
     }
 
+    /**
+     * Send request to sign_in page and recieve a jwt token in order to log in.
+     * 
+     * Once the jwt token is reviece then the user may be logged in.
+     */
     const fetchLogin = async() => {
         let jsonUsername = JSON.stringify(usernamePassword)
         let loginResponse = await fetch('http://shrouded-ravine-06737.herokuapp.com/sign_in',{method:'POST', mode: 'cors',
