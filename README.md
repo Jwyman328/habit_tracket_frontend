@@ -22,7 +22,7 @@
 
  <br></br>
  <h2>View your daily habit activities </h2>
-  <image src='docImages/eventsTimeTable.png'  width=450 height=300 /> 
+  <image src='docImages/eventsTimeTable.png'  width=650 height=400 /> 
 
 
 
