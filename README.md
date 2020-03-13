@@ -19,15 +19,10 @@
 :-------------------------:|:-------------------------:
  <image src='docImages/startTimedActivity.png'  width=450 height=300 />  | <image src='docImages/timedHabitResults.png'  width=450 height=300 />
 
- <h2>Use interactive graphs to see point or activity metrics </h2>
- 
- Sleep Hour Progress over 60 days |  Total Points over 7 days    
-:-------------------------:|:-------------------------:
-<image src='imageDocs/interactiveGraphSleepActivityMetric.png'  width=550 height=400 /> | <image src='imageDocs/interactiveGraphWeek.png'  width=550 height=400 /> 
 
  <br></br>
- <h2>Set personal goals and compete against your expectations </h2>
- 
+ <h2>View your daily habit activities </h2>
+  <image src='docImages/eventsTimeTable.png'  width=450 height=300 /> 
 
 
 
