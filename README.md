@@ -2,19 +2,18 @@
 
 <h2> Set goals, either timed or checked and track how you do.</h2>
  
- <h4>Scoring System </h4>
- <image src='imageDocs/scoring.png'  width=750 height=300 /> 
- 
  <br></br>
  <h2>Create A Habit </h2>
  <image src='docImages/createHabit.png'  width=750 height=400 /> 
 
  <br></br>
- <h2>See your daily and monthly progress with Graphs </h2>
- 
- Daily Progress |  Monthly Progress     
-:-------------------------:|:-------------------------:
-<image src='imageDocs/dailyPoints.png'  width=450 height=300 /> | <image src='imageDocs/monthGraph.png'  width=450 height=300 /> 
+ <h2>Track your Timed or Checked Habits </h2>
+ <h4> Choose a Habit </h4>
+  <image src='docImages/chooseHabit.png'  width=750 height=400 /> 
+
+ Checked Habits     |  Timed Habit Running            | Timed Habit Results
+:-------------------------:|:-------------------------:|:-------------------------:
+<image src='docImages/mainPageCheckedActivity.png'  width=450 height=300 /> | <image src='docImages/startTimedActivity.png'  width=450 height=300 />  | <image src='docImages/timedHabitResults.png'  width=450 height=300 />
 
  <h2>Use interactive graphs to see point or activity metrics </h2>
  
