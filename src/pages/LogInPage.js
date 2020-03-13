@@ -46,7 +46,7 @@ function LoginPage(props) {
         fetchLogin()
     }
     return (
-        <div style={{'background-color': '#ffa494', height:800}}>
+        <div style={{'backgroundColor': '#ffa494', height:800}}>
             <h1>Login</h1>
 
             <form onSubmit={handleSubmit}>
