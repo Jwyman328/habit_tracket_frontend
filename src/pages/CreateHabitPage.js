@@ -110,7 +110,7 @@ function CreateHabit(props) {
     }
 
     return (
-        <div>
+        <div className='backgroundFill'>
             <h1>Create Habit</h1>
             {props.loggedIn?null: <Redirect to='/login'/>}
             <Form onSubmit={handleCreateAHabit}>

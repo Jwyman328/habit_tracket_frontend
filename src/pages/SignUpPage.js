@@ -46,7 +46,7 @@ function SignUpPage(props) {
         fetchLogin()
     }
     return (
-        <div style={{'background-color': '#ffa494', height:800}}>
+        <div className='backgroundFill'>
             <h1>Sign Up</h1>
             <form onSubmit={handleSubmit}>
                 <label>Username <input onChange={inputChangeHandler} type='text' name='username'/> </label>

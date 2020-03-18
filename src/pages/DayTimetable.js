@@ -258,7 +258,7 @@ function DayTimeTable(props) {
     }, [timeRows])
 
     return (
-        <div>
+        <div className='backgroundFill'>
         {props.loggedIn?null: <Redirect to='/login'/>}
             <Col className = 'my-3'>
                 <Calendar className='calender centerItem' value={date} onClickDay={click_date}  />
