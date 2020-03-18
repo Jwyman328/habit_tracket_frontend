@@ -46,9 +46,14 @@ function LoginPage(props) {
         fetchLogin()
     }
     return (
-        <div style={{'backgroundColor': '#ffa494', height:800}}>
+        <div style={{'backgroundColor': '#ffa494', height:'100vh'}}>
             <h1>Login</h1>
-
+            <br></br>
+            <h4 >Guest User Access</h4>
+            <h5>username: test123456 </h5>
+            <h5>password: test123</h5>
+         
+            <br></br>
             <form onSubmit={handleSubmit}>
                 <label>Username <input onChange={inputChangeHandler} type='text' name='username'/> </label>
                 <br></br>
