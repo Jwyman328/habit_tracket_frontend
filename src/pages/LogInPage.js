@@ -46,7 +46,8 @@ function LoginPage(props) {
         fetchLogin()
     }
     return (
-        <div style={{'backgroundColor': '#ffa494', height:'100vh'}}>
+        <div className='loginPage' >
+            <br></br>
             <h1>Login</h1>
             <br></br>
             <h4 >Guest User Access</h4>

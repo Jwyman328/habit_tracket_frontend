@@ -111,7 +111,7 @@ function CalendarContainer(props) {
 
 
     return (
-        <Container className='backgroundFill'>
+        <Container className='habitCalender'>
             {props.loggedIn ? null : <Redirect to='/login' />}
             <Row>
                 <Col className='my-3'>
