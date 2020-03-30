@@ -2,6 +2,9 @@ import React, {useState} from 'react';
 import PropTypes from 'prop-types';
 import {Redirect} from 'react-router-dom';
 import { Button } from 'react-bootstrap';
+import stopWatchLogo from '../images/stopwatch-outline.svg'
+import barChartLogo from '../images/checkbox-outline.svg'
+
 //import '../App.css';
 
 
@@ -48,7 +51,10 @@ function LoginPage(props) {
     return (
         <div className='loginPage' >
             <br></br>
+            <img className='stopWatchLogo-left' src={stopWatchLogo} />
+            <img className='checkBox-right' src={barChartLogo} />
             <h1>Login</h1>
+
             <br></br>
             <h4 >Guest User Access</h4>
             <h5>username: test123456 </h5>

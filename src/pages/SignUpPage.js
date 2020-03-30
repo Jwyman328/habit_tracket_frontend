@@ -2,6 +2,8 @@ import React,{useState}  from 'react';
 import PropTypes from 'prop-types';
 import {Redirect} from 'react-router-dom';
 import { Button } from 'react-bootstrap';
+import stopWatchLogo from '../images/stopwatch-outline.svg'
+import barChartLogo from '../images/checkbox-outline.svg'
 
 
 /**
@@ -48,6 +50,8 @@ function SignUpPage(props) {
     return (
         <div className='loginPage'>
             <br></br>
+            <img className='stopWatchLogo-left' src={stopWatchLogo} />
+            <img className='checkBox-right' src={barChartLogo} />
             <h1>Sign Up</h1>
             <form onSubmit={handleSubmit}>
                 <label>Username <input onChange={inputChangeHandler} type='text' name='username'/> </label>
