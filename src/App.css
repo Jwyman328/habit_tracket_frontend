@@ -29,6 +29,17 @@
  
   left:70%
 }
+
+
+@media (max-width: 700px){
+  .stopWatchLogo-left {
+    right:80%
+  }
+  .checkBox-right {
+    left:80%
+  }
+
+}
 .habitCalender {
   min-height: 100vh;
   height: auto;
