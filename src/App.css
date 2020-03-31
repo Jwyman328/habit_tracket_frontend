@@ -20,14 +20,30 @@
 .stopWatchLogo-left {
   height: 50px;
   position: absolute;
-  right:70%
+  right:70%;
+  animation-name: rotate;
+  animation-duration: 2s;
 
 }
 .checkBox-right {
   height: 50px;
   position: absolute;
- 
-  left:70%
+  left:70%;
+  animation-name: rotate;
+  animation-duration: 2s;
+}
+
+@keyframes rotate{
+  0% {
+    transform: translate(0);
+  }
+  50% {
+    transform:rotateZ(-180deg) ;
+  }
+
+  100% {
+    transform: rotateZ(0);
+  }
 }
 
 
