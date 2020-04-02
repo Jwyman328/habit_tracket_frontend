@@ -53,7 +53,7 @@ function LoginPage(props) {
             <br></br>
             <img className='stopWatchLogo-left' src={stopWatchLogo} />
             <img className='checkBox-right' src={barChartLogo} />
-            <h1>Login</h1>
+            <h1 className='login-text'>Login</h1>
 
             <br></br>
             <h4 >Guest User Access</h4>

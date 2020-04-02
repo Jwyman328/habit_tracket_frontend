@@ -113,6 +113,11 @@ function CalendarContainer(props) {
     return (
         <Container className='habitCalender'>
             {props.loggedIn ? null : <Redirect to='/login' />}
+            <div className='create-habit-title'>
+                <h1>
+                    Habit Calendar
+                </h1>
+            </div>
             <Row>
                 <Col className='my-3'>
                     <Calendar className='calender centerItem ' value={date} onClickDay={click_date} />

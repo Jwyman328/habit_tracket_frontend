@@ -111,7 +111,7 @@ function CreateHabit(props) {
 
     return (
         <div className='createHabit'>
-            <h1>Create Habit</h1>
+            <h1 className='create-habit-title'>Create Habit</h1>
             {props.loggedIn?null: <Redirect to='/login'/>}
             <Form onSubmit={handleCreateAHabit}>
                 <Form.Group>

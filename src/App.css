@@ -17,6 +17,14 @@
   position: relative;
 
 }
+
+.create-habit-title {
+  background-image: linear-gradient(to right, 	yellow,	#b6efff);
+  display: inline-block;
+  -webkit-background-clip: text;
+  color: transparent;
+
+}
 .stopWatchLogo-left {
   height: 50px;
   position: absolute;

@@ -260,6 +260,11 @@ function DayTimeTable(props) {
     return (
         <div className='dailyTimeTable'>
         {props.loggedIn?null: <Redirect to='/login'/>}
+        <div className='create-habit-title'>
+                <h1>
+                    Time Table
+                </h1>
+            </div>
             <Col className = 'my-3'>
                 <Calendar className='calender centerItem' value={date} onClickDay={click_date}  />
             </Col>
