@@ -20,10 +20,10 @@
 }
 
 .create-habit-title {
-  background-image: linear-gradient(to right, 	#a4abff,	black);
+  background-image: linear-gradient(to right, 	#ffa494,green);
   display: inline-block;
   -webkit-background-clip: text;
-  color: transparent;
+  color: rgba(24, 23, 23, 0.851);
 
 }
 .stopWatchLogo-left {
@@ -229,7 +229,7 @@ hr {
 }
 
 .flip-card-front {
-  background-image: linear-gradient(to bottom, #a4abff, #a4d8ff,#a4fff9);
+  background-image: linear-gradient(to bottom, #a4abff,#a4fff9,#ffa494);
 
 }
 
