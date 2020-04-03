@@ -19,7 +19,7 @@
 }
 
 .create-habit-title {
-  background-image: linear-gradient(to right, 	yellow,	#b6efff);
+  background-image: linear-gradient(to right, 	#a4abff,	black);
   display: inline-block;
   -webkit-background-clip: text;
   color: transparent;
@@ -182,4 +182,96 @@ hr {
   width: 100%;               
   background-color:red;
   height: 1px;
+}
+
+
+.card-container {
+  display: flex;
+  flex-direction: row;
+  width:80vw;
+  height: 30vh;
+  margin-left: 8vw;
+  margin-right:8vw;
+  margin-top: 5vh;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+
+.entire-card {
+  position: relative;
+  perspective: 1500px;
+  width: 25vw;
+  height: 30vh;
+  line-break: loose;
+}
+
+.flip-card {
+  width: 25vw;
+  height: 30vh;
+  border-style: solid;
+  border-width: 1px;
+  border-color: black;
+  box-shadow: 5px 5px black ;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  position: absolute;
+  left: 0;
+  top: 0;
+  backface-visibility: hidden;
+  transition: all .9s;
+
+}
+
+.flip-card-front {
+  background-image: linear-gradient(to bottom, #a4abff, #a4d8ff,#a4fff9);
+
+}
+
+.flip-card-back {
+  width:100%;
+  transform: rotateY(180deg);
+}
+
+.entire-card:hover .flip-card-front {
+  transform: rotateY(180deg);
+}
+
+.entire-card:hover .flip-card-back{
+  transform: rotateY(0);
+
+}
+
+.card-title {
+  font-size: xx-large;
+  text-transform: capitalize;
+}
+
+
+@media (max-width: 600px){
+  .card-container {
+    flex-direction: column;
+    width:80vw;
+    height: auto;
+    justify-content: center;
+    align-items: center;
+
+  }
+  .entire-card {
+    position: relative;
+    perspective: 1500px;
+    width: 55vw;
+    height: 30vh;
+    min-height: 150px;
+    line-break: loose;
+  }
+
+  .flip-card {
+    width: 55vw;
+    height: 20vh;
+    min-height: 150px;
+
+  }
 }

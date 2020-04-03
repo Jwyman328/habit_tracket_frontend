@@ -52,7 +52,7 @@ function SignUpPage(props) {
             <br></br>
             <img className='stopWatchLogo-left' src={stopWatchLogo} />
             <img className='checkBox-right' src={barChartLogo} />
-            <h1>Sign Up</h1>
+            <h1 className='create-habit-title'>Sign Up</h1>
             <form onSubmit={handleSubmit}>
                 <label>Username <input onChange={inputChangeHandler} type='text' name='username'/> </label>
                 <br></br>
