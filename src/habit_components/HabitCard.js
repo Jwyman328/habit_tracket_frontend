@@ -45,8 +45,8 @@ function HabitCard(props) {
     }
 
     return(
-        <Col>
-            <Card >
+        <Col className='habit-card-container'>
+            <Card className='card-style' >
                 <Card.Body className={props.type_of_goal =='total'? props.completed? 'greenCard': 'redCard': props.daily_completed? 'greenCard': 'redCard'}>
                     <Card.Title className={props.type_of_goal =='total'? props.completed? 'greenTitle': 'redTitle': props.daily_completed? 'greenTitle': 'redTitle'}> {props.title}</Card.Title>
                     <Card.Subtitle className="mb-2  cardText"> <p> start: {props.start_date}</p>  </Card.Subtitle>

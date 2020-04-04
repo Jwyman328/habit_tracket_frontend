@@ -75,7 +75,7 @@
 }
 .createHabit {
   min-height: 100vh;
-  font-size: xx-large;
+  font-size: x-large;
   height: auto;
   background-image: linear-gradient(to right bottom,  #ffb6a98a ,  #ffa49469 ), url('https://images.pexels.com/photos/247421/pexels-photo-247421.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500');
   background-size: cover;
@@ -176,6 +176,31 @@ body {
   background-color: #47e3ff ;
 }
 
+.card-style {
+  width:50vh;
+  max-width: 500px;
+}
+
+.form-group {
+width: 40VW;
+min-width: 200px;
+}
+
+.form-style {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.habit-card-container {
+  width:80vw;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
 hr {
   border: 0;
   margin: 0;
@@ -248,7 +273,7 @@ hr {
 }
 
 .card-title {
-  font-size: xx-large;
+  font-size: x-large;
   text-transform: capitalize;
 }
 
@@ -278,3 +303,4 @@ hr {
 
   }
 }
+

@@ -113,21 +113,21 @@ function CreateHabit(props) {
         <div className='createHabit'>
             <h1 className='create-habit-title'>Create Habit</h1>
             {props.loggedIn?null: <Redirect to='/login'/>}
-            <Form onSubmit={handleCreateAHabit}>
-                <Form.Group>
+            <Form className='form-style'  onSubmit={handleCreateAHabit}>
+                <Form.Group className='form-group'>
                     <Form.Label>Habit Activity Name  </Form.Label>
-                    <Form.Control onChange={inputChangeHandler} name='title' type="text" placeholder="ex. run, walk, eat a salad" />
+                    <Form.Control  onChange={inputChangeHandler} name='title' type="text" placeholder="ex. run, walk, eat a salad" />
                 </Form.Group>
-                <Form.Group>
+                <Form.Group className='form-group'>
                     <Form.Label>Start Date &nbsp; </Form.Label>
                     <DatePicker selected={startDate} onChange={handleStartDateChange} />
                 </Form.Group>
-                <Form.Group>
+                <Form.Group className='form-group'>
                     <Form.Label>End Date &nbsp; </Form.Label>
                     <DatePicker selected={endDate} onChange={handleEndDateChange} />
                 </Form.Group>
 
-                <Form.Group>
+                <Form.Group className='form-group'>
                     <Form.Label> Habit Type</Form.Label>
                     <Form.Control name='type_of_habit' as="select" onChange={inputChangeHandler}>
                         <option value='timed'>Timed</option>
@@ -135,14 +135,14 @@ function CreateHabit(props) {
     
                     </Form.Control>
                 </Form.Group>
-                <Form.Group>
+                <Form.Group className='form-group'>
                     <Form.Label> Goal Type</Form.Label>
                     <Form.Control name='type_of_goal' as="select" onChange={inputChangeHandler}>
                         <option value='total'>Total length of Dates Selected</option>
                         <option value='daily'>Daily</option>
                     </Form.Control>
                 </Form.Group>
-                <Form.Group>
+                <Form.Group className='form-group'>
                     <Form.Label>Goal Amount </Form.Label>
                     <Form.Control onChange={inputChangeHandler} name='goal_amount' type="number" min="0" step="1" placeholder="timed = hrs, checked=# of times done" />
                 </Form.Group>
