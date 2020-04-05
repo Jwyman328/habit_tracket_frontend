@@ -19,6 +19,33 @@
 
 }
 
+.login-card {
+border-width: 1px;
+border-style: solid;
+display: flex;
+flex-direction: column;
+margin: 0 auto;
+width: 70%;
+max-width: 800px;
+background-image: linear-gradient(to bottom, #a4abff,#a4fff9,#ffa494);
+opacity: .8;
+box-shadow: 5px 5px 10px black ;
+position: relative;
+
+}
+/* #a4abff,#a4fff9,#ffa494 */
+.custom-button {
+  background-color: #a4abff;
+  width: 100px;
+  height: 50px;
+  border-radius: 10px;
+  margin: 10px;
+  text-transform: uppercase;
+  font-weight: 600;
+  color:white;
+ 
+}
+
 .create-habit-title {
   background-image: linear-gradient(to right, 	#ffa494,green);
   display: inline-block;
@@ -255,7 +282,7 @@ hr {
 
 .flip-card-front {
   background-image: linear-gradient(to bottom, #a4abff,#a4fff9,#ffa494);
-
+  opacity:.8;
 }
 
 .flip-card-back {
@@ -275,6 +302,7 @@ hr {
 .card-title {
   font-size: x-large;
   text-transform: capitalize;
+
 }
 
 

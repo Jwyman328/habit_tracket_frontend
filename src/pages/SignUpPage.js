@@ -50,6 +50,7 @@ function SignUpPage(props) {
     return (
         <div className='loginPage'>
             <br></br>
+            <div className='login-card'>
             <img className='stopWatchLogo-left' src={stopWatchLogo} />
             <img className='checkBox-right' src={barChartLogo} />
             <h1 className='create-habit-title'>Sign Up</h1>
@@ -58,8 +59,9 @@ function SignUpPage(props) {
                 <br></br>
                 <label>Password <input onChange={inputChangeHandler}  type='password' name='password'/> </label>
                 <br></br>
-                <Button onClick={handleSubmit}> Sign up </Button>
+                <button className='custom-button' onClick={handleSubmit}> Sign up </button>
             </form>
+            </div>
             {props.loggedIn?<Redirect to='/home' />:null}
         </div>
     )
