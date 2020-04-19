@@ -8,12 +8,8 @@ import moment from 'moment'
 
 function ActivityDisplayForOrderOfEvent(props) {
 
-
-
     const [displayStartTime, setDisplayStartTime] = useState(undefined)
     const [displayEndTime, setDisplayEndTime] = useState(undefined)
-
-
 
 
     useEffect(() => {
