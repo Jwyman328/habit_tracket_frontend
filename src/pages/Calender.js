@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { Redirect } from 'react-router-dom';
 
 import Calendar from 'react-calendar';
-import HabitCard from '../habit_components/HabitCard';
+import HabitCard from '../components/habit_components/HabitCard';
 
 /**
  * A calander to manage selecting the date for which Habits shall be displayed.

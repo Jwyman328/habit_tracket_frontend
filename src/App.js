@@ -11,7 +11,7 @@ import DailyTimedCreateActivity from './pages/Habit_activity_data_pages/DailyTim
 import TotalCheckedCreateActivity from './pages/Habit_activity_data_pages/TotalCheckedCreateActivity'
 import TotalTimedCreateActivity from './pages/Habit_activity_data_pages/TotalTimedCreateActivity'
 import DailyCheckCreateActivity from './pages/Habit_activity_data_pages/DailyCheckCreateActivity'
-import NavBar from './general_components/NavBar'
+import NavBar from './components/general_components/NavBar'
 import CalendarContainer from './pages/Calender'
 import DayTimeTable from './pages/DayTimetable';
 import GlobalContext from './context/globalContext';

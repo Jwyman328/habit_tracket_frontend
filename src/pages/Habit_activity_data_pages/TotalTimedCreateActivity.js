@@ -9,7 +9,7 @@ import ActivityTimed from '../../activity_components/ActivityTimedCard';
 import {  Container, Row, Col } from 'react-bootstrap';
 import { Button, Card } from 'react-bootstrap';
 
-import PieChart from '../../general_components/ChartPie';
+import PieChart from '../../components/general_components/ChartPie';
 
 /**
  * 

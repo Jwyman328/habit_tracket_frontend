@@ -7,7 +7,7 @@ import ActivityChecked from '../../activity_components/ActivityCheckedCard';
 import { Container, Row, Col, Card } from 'react-bootstrap';
 import { Button } from 'react-bootstrap';
 
-import PieChart from '../../general_components/ChartPie';
+import PieChart from '../../components/general_components/ChartPie';
 
 // has start button and stop button 
 // start button posts a new activity with habit id, start time of when clicked, end_time=blank

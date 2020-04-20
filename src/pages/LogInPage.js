@@ -2,9 +2,7 @@ import React, { useState, useContext } from "react";
 import PropTypes from "prop-types";
 import { Redirect } from "react-router-dom";
 import { Button } from "react-bootstrap";
-import stopWatchLogo from "../images/stopwatch-outline.svg";
-import barChartLogo from "../images/checkbox-outline.svg";
-import FlipCard from "../general_components/flipCard";
+import FlipCard from "../components/general_components/flipCard";
 import GuestAccessInfo from "../forms/components/GuestAccessInfo";
 
 //card background image links
@@ -22,6 +20,10 @@ import useGetLoginPageState from "./customHooks/LoginPage/useGetLoginPageState";
 // helper function
 import fetchLogin from "../utils/fetchLogin";
 
+//card
+import LoginCard from "../components/LoginPageComponents/LoginCard";
+import LoginCardLogoLeft from "../components/LoginPageComponents/LoginCardLogoLeft";
+import LoginCardLogoRight from "../components/LoginPageComponents/LoginCardLogoRight";
 /**
  * Allow a current user to login, by sending username, password and jwt token to DRF for authentication.
  * @param {Bool} props.loggedIn - Representing if the user is considered logged in or out.
@@ -43,9 +45,9 @@ function LoginPage(props) {
   return (
     <div className="loginPage">
       <br></br>
-      <div className="login-card">
-        <img className="stopWatchLogo-left" src={stopWatchLogo} />
-        <img className="checkBox-right" src={barChartLogo} />
+      <LoginCard>
+        <LoginCardLogoLeft />
+        <LoginCardLogoRight />
         <h1 className="create-habit-title">Login</h1>
 
         <br></br>
@@ -56,7 +58,8 @@ function LoginPage(props) {
           inputChangeHandler={inputChangeHandler}
           handleSubmit={handleSubmit}
         />
-      </div>
+      </LoginCard>
+      
       <div className="card-container">
         <FlipCard
           image={
