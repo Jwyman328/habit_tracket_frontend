@@ -12,10 +12,10 @@ import cardOneLink from "../imageLinks/cardImageLinks/cardOneLink";
 //import '../App.css';
 
 //forms
-import LoginPageForm from "../forms/LoginPageForm";
+import AuthPageForm from "../forms/AuthPageForm";
 
 //custom hooks
-import useGetLoginPageState from "./customHooks/LoginPage/useGetLoginPageState";
+import useGetAuthState from "./customHooks/LoginPage/useGetAuthState";
 
 // helper function
 import fetchLogin from "../utils/fetchLogin";
@@ -24,6 +24,7 @@ import fetchLogin from "../utils/fetchLogin";
 import LoginCard from "../components/LoginPageComponents/LoginCard";
 import LoginCardLogoLeft from "../components/LoginPageComponents/LoginCardLogoLeft";
 import LoginCardLogoRight from "../components/LoginPageComponents/LoginCardLogoRight";
+import CardTitle from '../components/general_components/CardTitle';
 /**
  * Allow a current user to login, by sending username, password and jwt token to DRF for authentication.
  * @param {Bool} props.loggedIn - Representing if the user is considered logged in or out.
@@ -36,11 +37,11 @@ function LoginPage(props) {
     setUsernamePassword,
     inputChangeHandler,
     logIn,
-  } = useGetLoginPageState();
+  } = useGetAuthState();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    fetchLogin(logIn, usernamePassword);
+    fetchLogin(logIn, usernamePassword, 'sign_in');
   };
   return (
     <div className="loginPage">
@@ -48,13 +49,13 @@ function LoginPage(props) {
       <LoginCard>
         <LoginCardLogoLeft />
         <LoginCardLogoRight />
-        <h1 className="create-habit-title">Login</h1>
+        <CardTitle titleText='Login' />
 
         <br></br>
         <GuestAccessInfo />
 
         <br></br>
-        <LoginPageForm
+        <AuthPageForm
           inputChangeHandler={inputChangeHandler}
           handleSubmit={handleSubmit}
         />

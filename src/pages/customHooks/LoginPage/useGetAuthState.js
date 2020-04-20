@@ -1,7 +1,7 @@
 import React, {useState, useContext} from 'react';
 import GlobalContext from '../../../context/globalContext'
 
-function useGetLoginPageState() {
+function useGetAuthState() {
     const [usernamePassword, setUsernamePassword] = useState({
         username: "",
         password: "",
@@ -23,4 +23,4 @@ function useGetLoginPageState() {
     
 }
 
-export default useGetLoginPageState;
+export default useGetAuthState;

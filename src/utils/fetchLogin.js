@@ -5,10 +5,10 @@ import React from 'react';
    *
    * Once the jwt token is reviece then the user may be logged in.
    */
-  const fetchLogin = async (loginUser,usernamePassword) => {
+  const fetchLogin = async (loginUser,usernamePassword,urlExtension) => {
     let jsonUsername = JSON.stringify(usernamePassword);
     let loginResponse = await fetch(
-      "http://shrouded-ravine-06737.herokuapp.com/sign_in",
+      `http://shrouded-ravine-06737.herokuapp.com/${urlExtension}`,
       {
         method: "POST",
         mode: "cors",
