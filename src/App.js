@@ -14,8 +14,9 @@ import DailyCheckCreateActivity from './pages/Habit_activity_data_pages/DailyChe
 import NavBar from './general_components/NavBar'
 import CalendarContainer from './pages/Calender'
 import DayTimeTable from './pages/DayTimetable';
+import GlobalContext from './context/globalContext';
 
-
+// global context
 
 
 function App() {
@@ -30,6 +31,7 @@ function App() {
     setLogIn(false)
   }
   return (
+    <GlobalContext.Provider value={{loggedIn:loggedIn, logIn:logIn, logOut:logOut }}>
     <div className="App" style={{height:'100%'}}>
       <link
       rel="stylesheet"
@@ -53,6 +55,7 @@ function App() {
       </Router>
      
     </div>
+    </GlobalContext.Provider>
   );
 }
 
