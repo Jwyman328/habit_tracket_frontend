@@ -3,8 +3,8 @@ import {BrowserRouter as Router,Switch, Route} from 'react-router-dom'
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-import LoginPage from './pages/LogInPage'
-import SignUpPage from './pages/SignUpPage'
+import LoginPage from './pages/Auth/LogInPage'
+import SignUpPage from './pages/Auth/SignUpPage'
 import HomePage from './unUsedPages/HomePage'
 import CreateHabit from './pages/CreateHabitPage'
 import DailyTimedCreateActivity from './pages/Habit_activity_data_pages/DailyTimedCreateActivity'

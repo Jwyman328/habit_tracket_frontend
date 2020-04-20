@@ -2,23 +2,22 @@ import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { Redirect } from "react-router-dom";
 import { Button } from "react-bootstrap";
-import stopWatchLogo from "../images/stopwatch-outline.svg";
-import barChartLogo from "../images/checkbox-outline.svg";
+
 
 // helper function
-import fetchLogin from "../utils/fetchLogin";
+import fetchLogin from "../../utils/fetchLogin";
 
 //card 
-import SignUpCard from "../components/LoginPageComponents/LoginCard";
-import SignUpCardLogoLeft from "../components/LoginPageComponents/LoginCardLogoLeft";
-import SignUpCardLogoRight from "../components/LoginPageComponents/LoginCardLogoRight";
-import CardTitle from '../components/general_components/CardTitle';
+import SignUpCard from "../../components/LoginPageComponents/LoginCard";
+import SignUpCardLogoLeft from "../../components/LoginPageComponents/LoginCardLogoLeft";
+import SignUpCardLogoRight from "../../components/LoginPageComponents/LoginCardLogoRight";
+import CardTitle from '../../components/general_components/CardTitle';
 
 //custom hooks 
-import useGetAuthState from "./customHooks/LoginPage/useGetAuthState";
+import useGetAuthState from "../customHooks/LoginPage/useGetAuthState";
 
 //form
-import AuthPageForm from "../forms/AuthPageForm";
+import AuthPageForm from "../../forms/AuthPageForm";
 
 
 /**
@@ -29,17 +28,6 @@ import AuthPageForm from "../forms/AuthPageForm";
  *
  */
 function SignUpPage(props) {
- /*  const [usernamePassword, setUsernamePassword] = useState({
-    username: "",
-    password: "",
-  });
-  const inputChangeHandler = (e) => {
-    let name = e.target.name;
-    let value = e.target.value;
-    let newUsernamePassword = { ...usernamePassword };
-    newUsernamePassword[name] = value;
-    setUsernamePassword(newUsernamePassword);
-  }; */
   const {
     usernamePassword,
     setUsernamePassword,

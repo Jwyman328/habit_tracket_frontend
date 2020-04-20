@@ -2,29 +2,29 @@ import React, { useState, useContext } from "react";
 import PropTypes from "prop-types";
 import { Redirect } from "react-router-dom";
 import { Button } from "react-bootstrap";
-import FlipCard from "../components/general_components/flipCard";
-import GuestAccessInfo from "../forms/components/GuestAccessInfo";
+import FlipCard from "../../components/general_components/flipCard";
+import GuestAccessInfo from "../../forms/components/GuestAccessInfo";
 
 //card background image links
-import cardThreeLink from "../imageLinks/cardImageLinks/cardThreeLink";
-import cardTwoLink from "../imageLinks/cardImageLinks/cardTwoLink";
-import cardOneLink from "../imageLinks/cardImageLinks/cardOneLink";
+import cardThreeLink from "../../imageLinks/cardImageLinks/cardThreeLink";
+import cardTwoLink from "../../imageLinks/cardImageLinks/cardTwoLink";
+import cardOneLink from "../../imageLinks/cardImageLinks/cardOneLink";
 //import '../App.css';
 
 //forms
-import AuthPageForm from "../forms/AuthPageForm";
+import AuthPageForm from "../../forms/AuthPageForm";
 
 //custom hooks
-import useGetAuthState from "./customHooks/LoginPage/useGetAuthState";
+import useGetAuthState from "../customHooks/LoginPage/useGetAuthState";
 
 // helper function
-import fetchLogin from "../utils/fetchLogin";
+import fetchLogin from "../../utils/fetchLogin";
 
 //card
-import LoginCard from "../components/LoginPageComponents/LoginCard";
-import LoginCardLogoLeft from "../components/LoginPageComponents/LoginCardLogoLeft";
-import LoginCardLogoRight from "../components/LoginPageComponents/LoginCardLogoRight";
-import CardTitle from '../components/general_components/CardTitle';
+import LoginCard from "../../components/LoginPageComponents/LoginCard";
+import LoginCardLogoLeft from "../../components/LoginPageComponents/LoginCardLogoLeft";
+import LoginCardLogoRight from "../../components/LoginPageComponents/LoginCardLogoRight";
+import CardTitle from '../../components/general_components/CardTitle';
 /**
  * Allow a current user to login, by sending username, password and jwt token to DRF for authentication.
  * @param {Bool} props.loggedIn - Representing if the user is considered logged in or out.
