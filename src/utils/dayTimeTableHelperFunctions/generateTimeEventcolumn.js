@@ -10,23 +10,9 @@ import { Col, Row, Container, Card } from 'react-bootstrap';
      * @return {Array} -- Return Array of rows, with each row representing an activity with the height depending on total time.
      */
     const generateTimeEventColumn = ({
-        dateFormated,
-        setDateFormated,
-        date,
-        setDate,
-        firstTimedEventMinutes,
-        setfirstTimedEventMinutes,
         lastTimedEventMinutes,
-        setlastTimedEventMinutes,
         firstEventMinutes,
-        setfirstEventMinutes,
         allTodaysActivities,
-        setallTodaysActivities,
-        timeRows,
-        setTimeRows,
-        eventRows,
-        setEventRows,
-        today
       }) => {
         // the minutes of the start time of the first activity + 60 will be the height of the first block
         let first_row_height = generateHeightOfDayTimeTable(firstEventMinutes + 60)
