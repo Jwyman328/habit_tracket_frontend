@@ -5,6 +5,10 @@ import PropTypes from 'prop-types';
 import { Col, Row, Container, Card } from 'react-bootstrap';
 
 import Calendar from 'react-calendar';
+import useGetDayTimeTableState from './customHooks/useGetDayTimeTableState';
+
+//helper functions 
+import fetchAllActivitiesForDateClicked from '../utils/fetchDataHelperFunctions/fetchAllActivitiesForDateClicked';
 
 /**
  * show a column of times and a corresponding column of checked and timed activities spanning their total time for a specific date.
@@ -22,33 +26,26 @@ import Calendar from 'react-calendar';
  * 
  */
 function DayTimeTable(props) {
-    let today = new Date()
-    let todayFormated = today.toDateString();
-    const [dateFormated, setDateFormated] = useState(todayFormated)
-    const [date, setDate] = useState(today);
-    let [firstTimedEventMinutes, setfirstTimedEventMinutes] = useState(undefined)
-    let [lastTimedEventMinutes, setlastTimedEventMinutes] = useState(undefined)
-    let [firstEventMinutes, setfirstEventMinutes] = useState(undefined)
-    let [allTodaysActivities, setallTodaysActivities] = useState(undefined)
-    let [timeRows, setTimeRows] = useState(undefined)
-    let [eventRows, setEventRows] = useState(undefined)
+    const {
+        dateFormated,
+        setDateFormated,
+        date,
+        setDate,
+        firstTimedEventMinutes,
+        setfirstTimedEventMinutes,
+        lastTimedEventMinutes,
+        setlastTimedEventMinutes,
+        firstEventMinutes,
+        setfirstEventMinutes,
+        allTodaysActivities,
+        setallTodaysActivities,
+        timeRows,
+        setTimeRows,
+        eventRows,
+        setEventRows,
+        today
+      } = useGetDayTimeTableState();
 
-    /**
-     * Get all activities for the Date selected.
-     * @param {Date} dateClicked -- Date selected on the Calender widget
-     */
-    const get_all_activities_for_today = async (dateClicked) => {
-        let year = dateClicked.getFullYear()
-        let month = dateClicked.getMonth() + 1 //js getMonth starts at 0
-        let day = dateClicked.getDate() 
-        let token = localStorage.getItem('token')
-        // make a fetch to site 
-        let fetchActivitiesForDate = await fetch(`http://shrouded-ravine-06737.herokuapp.com/habits/activities/${year}/${month}/${day}/`,{
-            headers:{ Authorization: `JWT ${token}`}})
-        let fetchActivitiesForDateJson = await fetchActivitiesForDate.json()
-        fetchActivitiesForDateJson = fetchActivitiesForDateJson.length === 0? undefined: fetchActivitiesForDateJson
-        setallTodaysActivities(fetchActivitiesForDateJson)
-    }
 
     /**
      * Send the date clicked to the corresponding methods to gather the date's activity data.
@@ -61,7 +58,7 @@ function DayTimeTable(props) {
         setDateFormated(dateClickedFormated)
         // when i click on a day it should show the habits set for that day 
         // so make a fetch call and get all the habits for that day 
-        get_all_activities_for_today(dateClicked)
+        fetchAllActivitiesForDateClicked(dateClicked,setallTodaysActivities)
          // then send that data to a component 
     }
 
