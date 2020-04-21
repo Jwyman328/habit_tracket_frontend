@@ -5,7 +5,7 @@ import { Button } from "react-bootstrap";
 
 
 // helper function
-import fetchLogin from "../../utils/fetchLogin";
+import fetchLogin from "../../utils/fetchDataHelperFunctions/fetchLogin";
 
 //card 
 import SignUpCard from "../../components/LoginPageComponents/LoginCard";

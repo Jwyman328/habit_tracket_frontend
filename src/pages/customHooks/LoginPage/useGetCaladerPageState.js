@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import fetchDailyHabitsByDate from "../../../utils/fetchDailyHabitsByDate";
-import fetchDateHabits from "../../../utils/fetchDateHabits";
+import fetchDailyHabitsByDate from "../../../utils/fetchDataHelperFunctions/fetchDailyHabitsByDate";
+import fetchDateHabits from "../../../utils/fetchDataHelperFunctions/fetchDateHabits";
 
 function useGetCaladerPageState(props) {
   let today = new Date();
@@ -9,7 +9,6 @@ function useGetCaladerPageState(props) {
   const [dateFormated, setDateFormated] = useState(todayFormated);
   const [habitData, setHabitData] = useState(null);
   let [habitDaily, setHabitDaily] = useState(null);
-  let habit_cards = undefined;
   let [token, setToken] = useState(undefined);
 
     /**
@@ -31,7 +30,6 @@ function useGetCaladerPageState(props) {
     setHabitData,
     habitDaily,
     setHabitDaily,
-    habit_cards,
     token,
     setToken,
   };

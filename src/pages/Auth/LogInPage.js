@@ -18,7 +18,7 @@ import AuthPageForm from "../../forms/AuthPageForm";
 import useGetAuthState from "../customHooks/LoginPage/useGetAuthState";
 
 // helper function
-import fetchLogin from "../../utils/fetchLogin";
+import fetchLogin from "../../utils/fetchDataHelperFunctions/fetchLogin";
 
 //card
 import LoginCard from "../../components/LoginPageComponents/LoginCard";
