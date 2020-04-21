@@ -12,6 +12,8 @@ function useGetDayTimeTableState(props) {
   let [timeRows, setTimeRows] = useState(undefined);
   let [eventRows, setEventRows] = useState(undefined);
 
+  
+
   return {
     dateFormated,
     setDateFormated,
