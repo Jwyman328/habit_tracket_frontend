@@ -1,4 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import fetchDailyHabitsByDate from "../../../utils/fetchDailyHabitsByDate";
+import fetchDateHabits from "../../../utils/fetchDateHabits";
 
 function useGetCaladerPageState(props) {
   let today = new Date();
@@ -9,6 +11,16 @@ function useGetCaladerPageState(props) {
   let [habitDaily, setHabitDaily] = useState(null);
   let habit_cards = undefined;
   let [token, setToken] = useState(undefined);
+
+    /**
+   * On mount call the methods to get the habit and daily habit data with the selected date.
+   */
+  useEffect(() => {
+    //fetch_date_habits(date)
+    fetchDateHabits(date, setHabitData);
+    fetchDailyHabitsByDate(date, setHabitDaily);
+  }, []);
+
 
   return {
     date,

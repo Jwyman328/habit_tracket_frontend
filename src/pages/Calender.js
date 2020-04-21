@@ -37,14 +37,6 @@ function CalendarContainer(props) {
     setToken,
   } = useGetCaladerPageState();
 
-  /**
-   * On mount call the methods to get the habit and daily habit data with the selected date.
-   */
-  useEffect(() => {
-    //fetch_date_habits(date)
-    fetchDateHabits(date, setHabitData);
-    fetchDailyHabitsByDate(date, setHabitDaily);
-  }, []);
 
   /**
    * Activate the specific date habit collecting methods by sending them the dateClicked.
