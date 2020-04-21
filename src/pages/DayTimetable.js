@@ -9,6 +9,8 @@ import useGetDayTimeTableState from './customHooks/useGetDayTimeTableState';
 
 //helper functions 
 import fetchAllActivitiesForDateClicked from '../utils/fetchDataHelperFunctions/fetchAllActivitiesForDateClicked';
+import generateHeightOfDayTimeTable from '../utils/dayTimeTableHelperFunctions/generateHeightOfDayTimetable'
+import parseHoursMinutes from '../utils/dayTimeTableHelperFunctions/parseHoursMinutes';
 
 /**
  * show a column of times and a corresponding column of checked and timed activities spanning their total time for a specific date.
@@ -61,33 +63,19 @@ function DayTimeTable(props) {
         fetchAllActivitiesForDateClicked(dateClicked,setallTodaysActivities)
          // then send that data to a component 
     }
-
-    /**
-     * Take in minutes and return a rem total with each minute equal to .25rem
-     * @param {Number} minutes -- Minutes for an activities total_time, AKA start_time - end_time.
-     * @return {String} the rem height total that represents the amount of minutes of this activity.
-     */
-    const generate_height = (minutes) => {
-        //take in minutes, return rem
-        let totalRem = minutes * .25
-        //totalRem = Math.round(totalRem)
-        totalRem = `${totalRem}rem`
-        return totalRem
-    }
-
     /**
      * Take in a stringTime and return an array of only the hours, and minutes.
      * @param {String} stringTime -- a string representation of a date
      * @return -- return an array of the hour, and minutes of the stringTime passed.
      */
-    const get_hours_minutes = (stringTime) => {
+/*     const get_hours_minutes = (stringTime) => {
         const[dates,times] = stringTime.split('T')
         let [hour,minutes, seconds] =  times.split(':')
         hour = parseInt(hour)
         minutes = parseInt(minutes)
         return [hour,minutes]
     }
-
+ */
     /**
      * Generate rows of columns representing 30 minute blocks for activity columns to pair next to.
      * @return {Array} -- Array of rows containing columns representing 30 minute blocks.
@@ -97,9 +85,9 @@ function DayTimeTable(props) {
         let firstTimedEventStartTime = allTodaysActivities[allTodaysActivities.length -1].start_time
         //latest timed event 
         let lastTimedEventEndTime = allTodaysActivities[0].end_time? allTodaysActivities[0].end_time: allTodaysActivities[0].start_time
-        let [first_hour,first_minutes] = get_hours_minutes(firstTimedEventStartTime)
+        let [first_hour,first_minutes] = parseHoursMinutes(firstTimedEventStartTime)
         setfirstTimedEventMinutes(first_minutes)
-        let [last_hour,last_minutes] = lastTimedEventEndTime? get_hours_minutes(lastTimedEventEndTime): get_hours_minutes(allTodaysActivities[0].start_time)
+        let [last_hour,last_minutes] = lastTimedEventEndTime? parseHoursMinutes(lastTimedEventEndTime): parseHoursMinutes(allTodaysActivities[0].start_time)
         setlastTimedEventMinutes(last_minutes)
 
         //get all hours in a list [9,10,11], aka total number of time rows to have
@@ -133,11 +121,11 @@ function DayTimeTable(props) {
      */
     const generate_timed_event_column = () => {
         // the minutes of the start time of the first activity + 60 will be the height of the first block
-        let first_row_height = generate_height(firstEventMinutes + 60)
+        let first_row_height = generateHeightOfDayTimeTable(firstEventMinutes + 60)
 
         // last row will be last activity's minutes - 60
         let last_event_minutes_in_the_hour = 60 - lastTimedEventMinutes
-        let last_row_height = generate_height(last_event_minutes_in_the_hour)
+        let last_row_height = generateHeightOfDayTimeTable(last_event_minutes_in_the_hour)
 
         /**
          * Strip a string datetime and put it in a string that only shows hours and minutes.
@@ -172,7 +160,7 @@ function DayTimeTable(props) {
                 // use to create height rem, if a checked activity set it to ten minutes 
                 let minutes = total_time_to_minutes(activity.total_time)
                 // set activity height
-                activityData[0].activityHeight = generate_height(minutes)
+                activityData[0].activityHeight = generateHeightOfDayTimeTable(minutes)
                 // get this item start time
                 let start_time = activity.start_time
                 let previous_end_time = allTodaysActivities[index + 1]? allTodaysActivities[index + 1].end_time: undefined
@@ -183,7 +171,7 @@ function DayTimeTable(props) {
     
                     let totalMilisecond = endMiliSeconds - startMiliSeconds
                     let totalMinutes = totalMilisecond * -1.6667e-5
-                    activityData.push(generate_height(totalMinutes))
+                    activityData.push(generateHeightOfDayTimeTable(totalMinutes))
                 }else{
                     //pass
                 }
