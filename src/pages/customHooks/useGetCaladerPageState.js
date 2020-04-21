@@ -18,7 +18,7 @@ function useGetCaladerPageState(props) {
     //fetch_date_habits(date)
     fetchDateHabits(date, setHabitData);
     fetchDailyHabitsByDate(date, setHabitDaily);
-  }, []);
+  },[]);
 
 
   return {

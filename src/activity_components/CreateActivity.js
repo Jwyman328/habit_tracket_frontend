@@ -7,63 +7,40 @@ import ActivityTimed from './ActivityTimedCard';
 
 import { Container, Row } from 'react-bootstrap';
 import { Button } from 'react-bootstrap';
+import useGetCreateActivityState from './customHooks/useGetCreateActivityState';
 
+import fetchDateHabitTotals from '../utils/fetchDataHelperFunctions/fetchDateHabitTotals';
+import fetchIndividualHabit from '../utils/fetchDataHelperFunctions/fetchIndividualHabit';
 
-// has start button and stop button 
-// start button posts a new activity with habit id, start time of when clicked, end_time=blank
-//total_time blank 
-
-// stop button sends a update with activity id, and stop time 
+import fetchHabitActivitiesForDateSelected from '../utils/fetchDataHelperFunctions/fetchHabitActivitiesForDateSelected';
 
 function CreateActivity(props) {
-    let match = useRouteMatch();
-    let habitID = match.params.id // use this param to ask for this habit and create activities with it 
-    let habitYear = match.params.year
-    let habitMonth = match.params.month 
-    let habitDay = match.params.day
-
-    let activityComponents = undefined
-
-    let [activity_data, setActivityData] = useState(undefined)
-    let [habitData, setHabitData] = useState({type_of_habit:''})
-    let [habitActivityDate, setHabitActivityDate] = useState(undefined)
-    let [allowAtivityCreation, setAllowAtivityCreation] = useState(undefined) // only allow if today is same as habitActivityDate 
-    let [totalAccumulatedForDate, setTotalAccumulatedForDate] = useState({accumulated_time:undefined,accumulated_count:undefined})
-    //'<int:habit_id>/<int:year>/<int:month>/<int:day>' 
-    // get total amounts for this date 
-    const get_date_habit_totals = async() => {
-        let token = localStorage.getItem('token')
-        let getResponse = await fetch(`http://shrouded-ravine-06737.herokuapp.com/habits/${habitID}/${habitYear}/${habitMonth}/${habitDay}`,{
-        headers:{ Authorization: `JWT ${token}`}}
-        );
-        let jsonResponse = await getResponse.json()
-        // set data to state 
-        setTotalAccumulatedForDate(jsonResponse)
-    }
-
-    // pass habit data 
-    // go get the habit so i have its data 
-    const get_individual_habit = async(id) => {
-        let token = localStorage.getItem('token')
-        let getResponse = await fetch(`http://shrouded-ravine-06737.herokuapp.com/habits/${id}/`,{
-        headers:{ Authorization: `JWT ${token}`}}
-        );
-        let jsonResponse = await getResponse.json()
-        // set data to state 
-        setHabitData(jsonResponse)
-    }
+    const createActivityState = useGetCreateActivityState()()
+    const {
+        habitID,
+        habitYear,
+        habitMonth,
+        habitDay,
+        activityComponents,
+        activity_data,
+        setActivityData,
+        habitData,
+        setHabitData,
+        habitActivityDate, setHabitActivityDate,
+        allowAtivityCreation, setAllowAtivityCreation,
+        totalAccumulatedForDate, setTotalAccumulatedForDate
+      } = createActivityState;
 
     useEffect( ()=> {
         // fetch this individual habits data 
         // if habit data hasnt loaded then go get it 
         if (habitData.id && activity_data===undefined){
-
             get_habits_activites_for_date_selected()
-            get_date_habit_totals()
+            
+            fetchDateHabitTotals(habitID,habitYear,habitMonth,habitDay, setTotalAccumulatedForDate)
         }else{
-                
             // no habit data therefore go get it 
-            get_individual_habit(habitID)
+            fetchIndividualHabit(setHabitData, habitID)
             // set habit activity date 
             let habitActivityDateValue = new Date(habitYear,habitMonth -1, habitDay)
             setHabitActivityDate(habitActivityDateValue)
@@ -176,9 +153,7 @@ function CreateActivity(props) {
             headers:{ Authorization: `JWT ${token}`}})
         let fetchHabitDateActivitiesJson = await fetchHabitDateActivities.json()
         setActivityData(fetchHabitDateActivitiesJson)
-
         // map the activities into a component 
-
     }
 
     const create_activityComponents = () => {

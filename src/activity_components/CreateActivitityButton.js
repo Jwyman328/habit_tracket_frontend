@@ -10,7 +10,7 @@ function CreateActivityButton(props) {
         let now = new Date()
         let end_time_value = undefined
         //end time will vary depending on if it is checked or time 
-        if (habitData.type_of_habit ==== 'checked'){
+        if (habitData.type_of_habit === 'checked'){
             let end_time_value = now 
         }else{
             let end_time_value = null
