@@ -7,7 +7,6 @@ import HabitCard from '../../components/habit_components/HabitCard';
    */
 
   const createHabitCards = (habitDaily, habitData, date) => {
-    console.log(habitDaily, " hb");
    let  habit_cards = habitDaily.map((item) => {
       for (let generalhabit in habitData) {
         if (habitData[generalhabit].id == item.habit) {
