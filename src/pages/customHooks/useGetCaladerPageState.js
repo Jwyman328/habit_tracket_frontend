@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import fetchDailyHabitsByDate from "../../../utils/fetchDataHelperFunctions/fetchDailyHabitsByDate";
-import fetchDateHabits from "../../../utils/fetchDataHelperFunctions/fetchDateHabits";
+import fetchDailyHabitsByDate from "../../utils/fetchDataHelperFunctions/fetchDailyHabitsByDate";
+import fetchDateHabits from "../../utils/fetchDataHelperFunctions/fetchDateHabits";
 
 function useGetCaladerPageState(props) {
   let today = new Date();

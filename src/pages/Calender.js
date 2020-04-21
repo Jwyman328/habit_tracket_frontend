@@ -5,7 +5,7 @@ import { Redirect } from "react-router-dom";
 
 import Calendar from "react-calendar";
 import HabitCard from "../components/habit_components/HabitCard";
-import useGetCaladerPageState from "./customHooks/LoginPage/useGetCaladerPageState";
+import useGetCaladerPageState from "./customHooks/useGetCaladerPageState";
 import fetchDailyHabitsByDate from "../utils/fetchDataHelperFunctions/fetchDailyHabitsByDate";
 import fetchDateHabits from "../utils/fetchDataHelperFunctions/fetchDateHabits";
 import createHabitCards from '../utils/createComponentsHelperFunctions/createHabitCards';
