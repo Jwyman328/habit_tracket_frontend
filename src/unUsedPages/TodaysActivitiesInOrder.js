@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react';
 import { Col,Row,Container } from 'react-bootstrap';
 
 import Calendar from 'react-calendar';
-import HabitCard from '../habit_components/HabitCard';
+import HabitCard from '../habit_components/HabitCard.tsx';
 
 import ActivityDisplayForOrderOfEvent from '../activity_components/ActivityDisplayForOrderOfEvent'
 

@@ -1,14 +1,20 @@
 import React from "react";
 
-function FlipCard(props) {
+type FlipCardProps = {
+  title: string;
+  backImage:JSX.Element;
+  image:JSX.Element;
+}
+
+function FlipCard({title, backImage, image}:FlipCardProps) {
   return (
       <div className="entire-card">
         <div className="flip-card flip-card-front">
-          {props.image}
-          <span className="card-title">{props.title}</span>
+          {image}
+          <span className="card-title">{title}</span>
         </div>
         <div className="flip-card flip-card-back">
-            {props.backImage}
+            {backImage}
         </div>
       </div>
   );

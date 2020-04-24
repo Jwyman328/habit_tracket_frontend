@@ -21,7 +21,24 @@ import { withRouter} from 'react-router-dom';
  * @param {Number} props.daily_count_times_done -- Total amount of activities this Habit had done for date selected
  * @param {Boolean} props.daily_completed       -- Daily Habit completed if daily habit totals greater than habit goal
  */
-function HabitCard(props) {
+
+type HabitCardProps = {
+    daily_id:string;
+    daily_timed_total:string;
+    daily_count_times_done:string;
+    daily_completed:boolean;
+    date_selected:Date;
+    id:string;
+    start_date:string;
+    end_date:string;
+    type_of_habit:string;
+    type_of_goal:string;
+    title:string;
+    goal_amount:string;
+    completed:boolean;
+    history:{push:Function};
+}
+function HabitCard(props:HabitCardProps) {
 
     /**
      * Go to the page that shows all activities for the Daily Habit selected.

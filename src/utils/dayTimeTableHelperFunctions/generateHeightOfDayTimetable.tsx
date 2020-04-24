@@ -5,12 +5,12 @@
      * @param {Number} minutes -- Minutes for an activities total_time, AKA start_time - end_time.
      * @return {String} the rem height total that represents the amount of minutes of this activity.
      */
-    const generateHeightOfDayTimeTable = (minutes) => {
+    const generateHeightOfDayTimeTable = (minutes:number) => {
         //take in minutes, return rem
         let totalRem = minutes * .25
         //totalRem = Math.round(totalRem)
-        totalRem = `${totalRem}rem`
-        return totalRem
+        let totalRemReadable = `${totalRem}rem`
+        return totalRemReadable
     }
 
 export default  generateHeightOfDayTimeTable;

@@ -1,9 +1,13 @@
 import React from 'react';
 
-function LoginCard(props) {
+type childrenProp = {
+    children: JSX.Element[]
+}
+
+function LoginCard({children}:childrenProp ) {
     return (
         <div className="login-card">
-            {props.children}
+            {children}
         </div>
     );
 }

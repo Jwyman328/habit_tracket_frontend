@@ -1,5 +1,5 @@
 import React from 'react';
-import  parseHoursMinutes from '../../utils/dayTimeTableHelperFunctions/parseHoursMinutes';
+import  parseHoursMinutes from '../../utils/dayTimeTableHelperFunctions/parseHoursMinutes.tsx';
 import { Col, Row, Container, Card } from 'react-bootstrap';
 
 

@@ -23,7 +23,12 @@ import useGetCreateHabitPageState from './customHooks/useGetCreateHabitPageState
  * Form for creating a Habit.
  * @param {Bool} props.loggedIn - Representing if the user is considered logged in or out. 
  */
-function CreateHabit(props) {
+type CreateHabitProps = {
+    history:Function;
+    loggedIn:boolean;
+}
+type HandleEventType = React.ChangeEvent<HTMLInputElement>;
+function CreateHabit({history,loggedIn}:CreateHabitProps) {
     const   {
         startDate,
         setStartDate,
@@ -37,7 +42,7 @@ function CreateHabit(props) {
      * set start date state variables for the habit for the selected start date.
      * @param {Date} date -- Start Date selected on the form
      */
-    let handleStartDateChange = (date) => {
+    let handleStartDateChange = (date:Date) => {
         let YYYYMMDD_date = formatDate(date)
         let newFormData = {...formData}
         newFormData['start_date'] = YYYYMMDD_date
@@ -48,7 +53,7 @@ function CreateHabit(props) {
      * set end date state variables for the habit for the selected end date.
      * @param {Date} date -- End Date selected on the form
      */
-    let handleEndDateChange = (date) => {
+    let handleEndDateChange = (date:Date) => {
         let YYYYMMDD_date = formatDate(date)
         let newFormData = {...formData}
         newFormData['end_date'] = YYYYMMDD_date
@@ -61,19 +66,19 @@ function CreateHabit(props) {
      * Stop the default form submit action and call createAHabit when a form is submitted.
      * @param {Object} e -- Form submit event
      */
-    const handleCreateAHabit = (e) => {
+    const handleCreateAHabit  =  (e:React.MouseEvent<HTMLButtonElement, MouseEvent> | HandleEventType | React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        createAHabitWithPost(formData, props.history)
+        createAHabitWithPost(formData, history)
     }
 
     return (
         <div className='createHabit'>
             <h1 className='create-habit-title'>Create Habit</h1>
-            {props.loggedIn?null: <Redirect to='/login'/>}
-            <Form className='form-style'  onSubmit={handleCreateAHabit}>
+            {loggedIn?null: <Redirect to='/login'/>}
+            <Form className='form-style'  onSubmit={(e:React.FormEvent<HTMLFormElement>) => handleCreateAHabit(e)}>
                 <Form.Group className='form-group'>
                     <Form.Label>Habit Activity Name  </Form.Label>
-                    <Form.Control  onChange={(e) => handleInputChange(e,setFormData, formData)} name='title' type="text" placeholder="ex. run, walk, eat a salad" />
+                    <Form.Control  onChange={(e:HandleEventType) => handleInputChange(e,setFormData, formData)} name='title' type="text" placeholder="ex. run, walk, eat a salad" />
                 </Form.Group>
                 <Form.Group className='form-group'>
                     <Form.Label>Start Date &nbsp; </Form.Label>
@@ -86,7 +91,7 @@ function CreateHabit(props) {
 
                 <Form.Group className='form-group'>
                     <Form.Label> Habit Type</Form.Label>
-                    <Form.Control name='type_of_habit' as="select" onChange={(e) => handleInputChange(e,setFormData, formData)}>
+                    <Form.Control name='type_of_habit' as="select" onChange={(e:HandleEventType) => handleInputChange(e,setFormData, formData)}>
                         <option value='timed'>Timed</option>
                         <option value='checked'>Checked</option>
     
@@ -94,16 +99,16 @@ function CreateHabit(props) {
                 </Form.Group>
                 <Form.Group className='form-group'>
                     <Form.Label> Goal Type</Form.Label>
-                    <Form.Control name='type_of_goal' as="select" onChange={(e) => handleInputChange(e,setFormData, formData)}>
+                    <Form.Control name='type_of_goal' as="select" onChange={(e:HandleEventType) => handleInputChange(e,setFormData, formData)}>
                         <option value='total'>Total length of Dates Selected</option>
                         <option value='daily'>Daily</option>
                     </Form.Control>
                 </Form.Group>
                 <Form.Group className='form-group'>
                     <Form.Label>Goal Amount </Form.Label>
-                    <Form.Control onChange={(e) => handleInputChange(e,setFormData, formData)} name='goal_amount' type="number" min="0" step="1" placeholder="timed = hrs, checked=# of times done" />
+                    <Form.Control onChange={(e:HandleEventType) => handleInputChange(e,setFormData, formData)} name='goal_amount' type="number" min="0" step="1" placeholder="timed = hrs, checked=# of times done" />
                 </Form.Group>
-                <Button className='btn btn-info' onClick={handleCreateAHabit}> Create Habit </Button>
+                <Button className='btn btn-info' onClick={(e:React.MouseEvent<HTMLButtonElement, MouseEvent>) => handleCreateAHabit(e)}> Create Habit </Button>
             </Form>
         </div>
     )

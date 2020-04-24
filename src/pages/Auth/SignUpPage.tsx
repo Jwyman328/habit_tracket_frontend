@@ -27,7 +27,10 @@ import AuthPageForm from "../../forms/AuthPageForm";
  * @param {Func} props.logIn - Turns loggedIn to true, allowing user to access logged in only services.
  *
  */
-function SignUpPage(props) {
+type LoggedIn = {
+  loggedIn:boolean
+}
+function SignUpPage({loggedIn}:LoggedIn) {
   const {
     usernamePassword,
     setUsernamePassword,
@@ -36,7 +39,7 @@ function SignUpPage(props) {
   } = useGetAuthState();
 
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e:React.ChangeEvent<HTMLInputElement>) => {
     e.preventDefault();
     fetchLogin(logIn, usernamePassword, 'sign_up');
   };
@@ -52,7 +55,7 @@ function SignUpPage(props) {
           handleSubmit={handleSubmit}
         />
       </SignUpCard>
-      {props.loggedIn ? <Redirect to="/home" /> : null}
+      {loggedIn ? <Redirect to="/home" /> : null}
     </div>
   );
 }
