@@ -31,6 +31,7 @@
 <h6> Front End </h6>
 <ul>
  <li>REACT</li>
+  <li>TypeScript</li>
  <li>CSS</li>
  <li>BootStrap</li>
  </ul>
