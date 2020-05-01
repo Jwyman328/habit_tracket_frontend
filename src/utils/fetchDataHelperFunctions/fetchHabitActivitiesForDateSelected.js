@@ -21,7 +21,7 @@ async function fetchHabitActivitiesForDateSelected({
         let token = localStorage.getItem('token')
         // make a fetch to site 
         
-        let fetchHabitDateActivities = await fetch(`http://shrouded-ravine-06737.herokuapp.com/habits/${habitID}/activities/${habitYear}/${habitMonth}/${habitDay}/`,{
+        let fetchHabitDateActivities = await fetch(`https://shrouded-ravine-06737.herokuapp.com/habits/${habitID}/activities/${habitYear}/${habitMonth}/${habitDay}/`,{
             headers:{ Authorization: `JWT ${token}`}})
         let fetchHabitDateActivitiesJson = await fetchHabitDateActivities.json()
         setActivityData(fetchHabitDateActivitiesJson)

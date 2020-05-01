@@ -10,7 +10,7 @@ async function fetchDailyHabitsByDate(dateClicked, setHabitDaily) {
         let day = dateClicked.getDate()
         let token = localStorage.getItem('token')
         // make a fetch to site 
-        let fetchDailyHabitsForDate = await fetch(`http://shrouded-ravine-06737.herokuapp.com/habits/daily_habits/${year}/${month}/${day}/`, {
+        let fetchDailyHabitsForDate = await fetch(`https://shrouded-ravine-06737.herokuapp.com/habits/daily_habits/${year}/${month}/${day}/`, {
             headers: { Authorization: `JWT ${token}` }
         })
         let fetchDailyHabitsForDateJson = await fetchDailyHabitsForDate.json()

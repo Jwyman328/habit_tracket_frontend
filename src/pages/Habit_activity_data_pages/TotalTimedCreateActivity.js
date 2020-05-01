@@ -43,7 +43,7 @@ function DailyTimedCreateActivity(props) {
     // get habit data
     const get_individual_habit = async(id) => {
         let token = localStorage.getItem('token')
-        let getResponse = await fetch(`http://shrouded-ravine-06737.herokuapp.com/habits/${id}/`,{
+        let getResponse = await fetch(`https://shrouded-ravine-06737.herokuapp.com/habits/${id}/`,{
         headers:{ Authorization: `JWT ${token}`}}
         );
         let jsonResponse = await getResponse.json()
@@ -89,7 +89,7 @@ function DailyTimedCreateActivity(props) {
         let post_data_formated = {habit_id:habitData.id, start_time:now, end_time:end_time_value, total_time: null} //record time it was done 
         let postDataJson = JSON.stringify(post_data_formated)
         let token = localStorage.getItem('token')
-        let getResponse = await fetch('http://shrouded-ravine-06737.herokuapp.com/habits/create_activity',{method:'POST', mode: 'cors',body:postDataJson,
+        let getResponse = await fetch('https://shrouded-ravine-06737.herokuapp.com/habits/create_activity',{method:'POST', mode: 'cors',body:postDataJson,
         headers:{ Authorization: `JWT ${token}`,'Content-Type': 'application/json'}}
         );
         let jsonResponse = await getResponse.json()
@@ -114,7 +114,7 @@ function DailyTimedCreateActivity(props) {
         let seconds = now.getSeconds()
         
         let token = localStorage.getItem('token')
-        let putResponse = await fetch(`http://shrouded-ravine-06737.herokuapp.com/habits/activities/update/${activity_id}/${year}/${month}/${day}/${hours}/${minutes}/${seconds}/`,{method:'PUT', mode: 'cors', //body:postDataJson
+        let putResponse = await fetch(`https://shrouded-ravine-06737.herokuapp.com/habits/activities/update/${activity_id}/${year}/${month}/${day}/${hours}/${minutes}/${seconds}/`,{method:'PUT', mode: 'cors', //body:postDataJson
         headers:{ Authorization: `JWT ${token}`,'Content-Type': 'application/json'}});
         
         let jsonResponse = await putResponse.json()
@@ -158,7 +158,7 @@ function DailyTimedCreateActivity(props) {
         let token = localStorage.getItem('token')
         // make a fetch to site 
         
-        let fetchHabitDateActivities = await fetch(`http://shrouded-ravine-06737.herokuapp.com/habits/${habitID}/activities/${habitYear}/${habitMonth}/${habitDay}/`,{
+        let fetchHabitDateActivities = await fetch(`https://shrouded-ravine-06737.herokuapp.com/habits/${habitID}/activities/${habitYear}/${habitMonth}/${habitDay}/`,{
             headers:{ Authorization: `JWT ${token}`}})
         let fetchHabitDateActivitiesJson = await fetchHabitDateActivities.json()
         setActivityData(fetchHabitDateActivitiesJson)

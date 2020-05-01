@@ -11,7 +11,7 @@ import React from 'react'
         let day = dateClicked.getDate() 
         let token = localStorage.getItem('token')
         // make a fetch to site 
-        let fetchActivitiesForDate = await fetch(`http://shrouded-ravine-06737.herokuapp.com/habits/activities/${year}/${month}/${day}/`,{
+        let fetchActivitiesForDate = await fetch(`https://shrouded-ravine-06737.herokuapp.com/habits/activities/${year}/${month}/${day}/`,{
             headers:{ Authorization: `JWT ${token}`}})
         let fetchActivitiesForDateJson = await fetchActivitiesForDate.json()
         fetchActivitiesForDateJson = fetchActivitiesForDateJson.length === 0? undefined: fetchActivitiesForDateJson

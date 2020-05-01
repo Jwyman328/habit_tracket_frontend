@@ -44,7 +44,7 @@ function TotalCheckedCreateActivity(props) {
     // go get the habit so i have its data 
     const get_individual_habit = async (id) => {
         let token = localStorage.getItem('token')
-        let getResponse = await fetch(`http://shrouded-ravine-06737.herokuapp.com/habits/${id}/`, {
+        let getResponse = await fetch(`https://shrouded-ravine-06737.herokuapp.com/habits/${id}/`, {
             headers: { Authorization: `JWT ${token}` }
         }
         );
@@ -89,7 +89,7 @@ function TotalCheckedCreateActivity(props) {
         let post_data_formated = { habit_id: habitData.id, start_time: now, end_time: end_time_value, total_time: null } //record time it was done 
         let postDataJson = JSON.stringify(post_data_formated)
         let token = localStorage.getItem('token')
-        let getResponse = await fetch('http://shrouded-ravine-06737.herokuapp.com/habits/create_activity', {
+        let getResponse = await fetch('https://shrouded-ravine-06737.herokuapp.com/habits/create_activity', {
             method: 'POST', mode: 'cors', body: postDataJson,
             headers: { Authorization: `JWT ${token}`, 'Content-Type': 'application/json' }
         }
@@ -135,7 +135,7 @@ function TotalCheckedCreateActivity(props) {
         let token = localStorage.getItem('token')
         // make a fetch to site 
 
-        let fetchHabitDateActivities = await fetch(`http://shrouded-ravine-06737.herokuapp.com/habits/${habitID}/activities/${habitYear}/${habitMonth}/${habitDay}/`, {
+        let fetchHabitDateActivities = await fetch(`https://shrouded-ravine-06737.herokuapp.com/habits/${habitID}/activities/${habitYear}/${habitMonth}/${habitDay}/`, {
             headers: { Authorization: `JWT ${token}` }
         })
         let fetchHabitDateActivitiesJson = await fetchHabitDateActivities.json()
