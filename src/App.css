@@ -96,7 +96,6 @@ position: relative;
   min-height: 100vh;
   height: auto;
   background-image:  linear-gradient(to right bottom,  #ffb6a98a ,  #ffa49469 ), url('https://images.pexels.com/photos/775201/pexels-photo-775201.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500');
-  mix-blend-mode: hard-light;
   background-size: cover;
   background-position: center;
 }
