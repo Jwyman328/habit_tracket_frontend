@@ -12,7 +12,6 @@ import fetchAllActivitiesForDateClicked from "../utils/fetchDataHelperFunctions/
 import generateHeightOfDayTimeTable from "../utils/dayTimeTableHelperFunctions/generateHeightOfDayTimetable";
 import parseHoursMinutes from "../utils/dayTimeTableHelperFunctions/parseHoursMinutes";
 import formatDateTimetoTime from "../utils/dayTimeTableHelperFunctions/formatDateTimeToTime";
-import totalTimeToMinutes from "../utils/dayTimeTableHelperFunctions/totalTimeToMinutes";
 import generateTimeColumn from "../utils/dayTimeTableHelperFunctions/generateTimeColumn";
 import generateTimeEventColumn from "../utils/dayTimeTableHelperFunctions/generateTimeEventcolumn";
 
@@ -31,7 +30,10 @@ import generateTimeEventColumn from "../utils/dayTimeTableHelperFunctions/genera
  * @var {Array} eventRows - Array of cards representing an activies length of time.
  *
  */
-function DayTimeTable(props) {
+type LoggedIn = {
+  loggedIn:boolean
+}
+function DayTimeTable({loggedIn}:LoggedIn) {
   const dayTimeTableState = useGetDayTimeTableState();
   const {
     dateFormated,
@@ -57,7 +59,7 @@ function DayTimeTable(props) {
    * Send the date clicked to the corresponding methods to gather the date's activity data.
    * @param {Date} dateClicked -- Date selected on the Calender widget
    */
-  const click_date = (dateClicked) => {
+  const click_date = (dateClicked : Date) => {
     setDateFormated(dateClicked.toDateString());
     setDate(dateClicked);
     let dateClickedFormated = dateClicked.toDateString();
@@ -100,7 +102,7 @@ function DayTimeTable(props) {
 
   return (
     <div className="dailyTimeTable">
-      {props.loggedIn ? null : <Redirect to="/login" />}
+      {loggedIn ? null : <Redirect to="/login" />}
       <div className="create-habit-title">
         <h1>Time Table</h1>
       </div>

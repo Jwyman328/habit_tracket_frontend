@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, EventHandler } from "react";
 import PropTypes from "prop-types";
 import { Redirect } from "react-router-dom";
 import { Button } from "react-bootstrap";
@@ -31,7 +31,13 @@ import CardTitle from '../../components/general_components/CardTitle';
  * @param {Func} props.logIn - Turns loggedIn to true, allowing user to access logged in only services.
  *
  */
-function LoginPage(props) {
+
+ type LoginPageProps = {
+  loggedIn: boolean;
+ }
+
+function LoginPage({loggedIn}:LoginPageProps) {
+
   const {
     usernamePassword,
     setUsernamePassword,
@@ -39,7 +45,7 @@ function LoginPage(props) {
     logIn,
   } = useGetAuthState();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: React.ChangeEvent<HTMLInputElement>) => {
     e.preventDefault();
     fetchLogin(logIn, usernamePassword, 'sign_in');
   };
@@ -84,7 +90,7 @@ function LoginPage(props) {
           backImage={<img height="100%" width="100%" src={cardThreeLink} />}
         />
       </div>
-      {props.loggedIn ? <Redirect to="/calender/" /> : null}
+      {loggedIn ? <Redirect to="/calender/" /> : null}
     </div>
   );
 }

@@ -1,16 +1,16 @@
 import React, { useState } from "react";
 
-function useGetDayTimeTableState(props) {
+function useGetDayTimeTableState() {
   let today = new Date();
   let todayFormated = today.toDateString();
-  const [dateFormated, setDateFormated] = useState(todayFormated);
-  const [date, setDate] = useState(today);
+  const [dateFormated, setDateFormated] = useState<string>(todayFormated);
+  const [date, setDate] = useState<Date>(today);
   let [firstTimedEventMinutes, setfirstTimedEventMinutes] = useState(undefined);
   let [lastTimedEventMinutes, setlastTimedEventMinutes] = useState(undefined);
   let [firstEventMinutes, setfirstEventMinutes] = useState(undefined);
   let [allTodaysActivities, setallTodaysActivities] = useState(undefined);
-  let [timeRows, setTimeRows] = useState(undefined);
-  let [eventRows, setEventRows] = useState(undefined);
+  let [timeRows, setTimeRows] = useState<any>(undefined);
+  let [eventRows, setEventRows] = useState<any>(undefined);
 
   
 

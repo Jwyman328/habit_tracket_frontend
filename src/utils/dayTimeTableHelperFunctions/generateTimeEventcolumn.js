@@ -1,7 +1,7 @@
 import React from 'react'
-import generateHeightOfDayTimeTable from './generateHeightOfDayTimetable'  
-import formatDateTimetoTime from './formatDateTimeToTime';
-import totalTimeToMinutes from './totalTimeToMinutes';
+import generateHeightOfDayTimeTable from './generateHeightOfDayTimetable.tsx'  
+import formatDateTimetoTime from './formatDateTimeToTime.tsx';
+import totalTimeToMinutes from './totalTimeToMinutes.tsx';
 import { Col, Row, Container, Card } from 'react-bootstrap';
 
     /**

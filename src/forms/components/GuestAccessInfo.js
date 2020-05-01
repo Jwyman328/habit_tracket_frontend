@@ -1,7 +1,7 @@
 import React from "react";
 
 
-function GuestAccessInfo(props) {
+function GuestAccessInfo() {
   return (
     <div>
       <h4>Guest User Access</h4>

@@ -1,12 +1,19 @@
 import React, { useState, useEffect } from "react";
 import formatDate from "../../utils/manipulateDataHelperFunctions/formatDate";
-
+type FormData = {
+  title:string;
+  start_date: string;
+  end_date: string;
+  type_of_habit: string;
+  type_of_goal: string;
+  goal_amount: string;
+}
 function useGetCreateHabitPageState() {
-  const startDateOriginal = new Date();
+  const startDateOriginal : Date = new Date();
   const formFormatedOriginalDate = formatDate(startDateOriginal);
-  const [startDate, setStartDate] = useState(startDateOriginal);
-  const [endDate, setEndDate] = useState(startDateOriginal);
-  const [formData, setFormData] = useState({
+  const [startDate, setStartDate] = useState<Date>(startDateOriginal);
+  const [endDate, setEndDate] = useState<Date>(startDateOriginal);
+  const [formData, setFormData] = useState<FormData>({
     title: "",
     start_date: formFormatedOriginalDate,
     end_date: formFormatedOriginalDate,

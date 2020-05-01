@@ -6,7 +6,7 @@ import React from 'react'
          * @param {Date} dateTime -- a string containing information of a date
          * @return {String} -- Return a string only containing the hours and minutes of the dateTime.
          */
-        const formatDateTimetoTime = (dateTime) => {
+        const formatDateTimetoTime = (dateTime:string) => {
             if (dateTime){
                 let [date, time] = dateTime.split('T')
                 let [hours,minutes,seconds] = time.split(':')

@@ -5,7 +5,7 @@ import { Redirect } from 'react-router-dom';
 
 import Calendar from 'react-calendar';
 import HabitCard from '../components/habit_components/HabitCard';
-import useGetCaladerPageState from '../pages/customHooks/useGetCaladerPageState'
+import useGetCaladerPageState from './customHooks/useGetCaladerPageState'
 import fetch_date_habits from '../utils/fetchDataHelperFunctions/fetchDateHabits';
 import fetch_daily_habits from '../utils/fetchDataHelperFunctions/fetchDailyHabitsByDate';
 import show_habit_cards from '../utils/createComponentsHelperFunctions/createHabitCards';
@@ -22,7 +22,44 @@ import show_habit_cards from '../utils/createComponentsHelperFunctions/createHab
  * @var {String} token - user's jwt token .
  */
 
-function CalendarContainer(props) {
+type HabitData = {
+    id: string;
+    start_date: Date;
+    end_date: Date;
+    type_of_habit: string;
+    type_of_goal: string;
+    title: string;
+    goal_amount: string;
+    completed: boolean;
+};
+
+type HabitDaily = {
+    id: string;
+    habit: {};
+    timed_total: string;
+    completed: boolean;
+    count_times_done_total: string;
+  };
+
+ type CalendarContainerProps = {
+    loggedIn:boolean
+ }
+ type CalendarContainerState = {
+  
+    date: Date;
+    setDate: Function;
+    dateFormated:string;
+    setDateFormated:Function;
+    habitData:HabitData[];
+    setHabitData: Function;
+    habitDaily: HabitDaily[];
+    setHabitDaily: Function;
+    token: string | undefined;
+    setToken: Function;
+  
+}
+
+function CalendarContainer({loggedIn} : CalendarContainerProps) {
 
 let {
   date,
@@ -35,14 +72,13 @@ let {
   setHabitDaily,
   token,
   setToken,
-  habit_cards,
-} = useGetCaladerPageState();
+} = useGetCaladerPageState<CalendarContainerState>();
 
     /**
      * Activate the specific date habit collecting methods by sending them the dateClicked.
      * @param {Date} dateClicked -- The date the user selected on the calender.
      */
-    const click_date = (dateClicked) => {
+    const click_date = (dateClicked:Date) => {
         setDate(dateClicked)
         let dateClickedFormated = dateClicked.toDateString()
         setDateFormated(dateClickedFormated)
@@ -56,7 +92,7 @@ let {
 
     return (
         <Container className='habitCalender'>
-            {props.loggedIn ? null : <Redirect to='/login' />}
+            {loggedIn ? null : <Redirect to='/login' />}
             <div className='create-habit-title'>
                 <h1>
                     Habit Calendar

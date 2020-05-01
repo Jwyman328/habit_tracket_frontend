@@ -6,11 +6,11 @@ import React from 'react'
          * @param {String} total_time -- A string containing hours and minutes
          * @return {Int} -- return an integer of the minutes from the hours/minutes passed.
          */
-        const totalTimeToMinutes = (total_time) => {
+        const totalTimeToMinutes = (total_time: string) => {
             let [hours,minutes,seconds] = total_time.split(':')
             let hoursToMinutes = parseInt(hours) * 60
-            minutes = parseInt(minutes) + hoursToMinutes
-            return minutes
+            let minutesNumber = parseInt(minutes) + hoursToMinutes
+            return minutesNumber
         }
 
 export default totalTimeToMinutes;
