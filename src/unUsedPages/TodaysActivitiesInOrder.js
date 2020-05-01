@@ -47,7 +47,7 @@ function TodaysActivitiesInOrder(){
         let day = dateClicked.getDate() 
         let token = localStorage.getItem('token')
         // make a fetch to site 
-        let fetchActivitiesForDate = await fetch(`http://shrouded-ravine-06737.herokuapp.com/habits/activities/${year}/${month}/${day}/`,{
+        let fetchActivitiesForDate = await fetch(`https://shrouded-ravine-06737.herokuapp.com/habits/activities/${year}/${month}/${day}/`,{
             headers:{ Authorization: `JWT ${token}`}})
         let fetchActivitiesForDateJson = await fetchActivitiesForDate.json()
         setAllTodaysActivities(fetchActivitiesForDateJson)
@@ -62,7 +62,7 @@ function TodaysActivitiesInOrder(){
         let day = dateClicked.getDate() 
         let token = localStorage.getItem('token')
         // make a fetch to site 
-        let fetchHabitsForDate = await fetch(`http://shrouded-ravine-06737.herokuapp.com/habits/${year}/${month}/${day}/`,{
+        let fetchHabitsForDate = await fetch(`https://shrouded-ravine-06737.herokuapp.com/habits/${year}/${month}/${day}/`,{
             headers:{ Authorization: `JWT ${token}`}})
         let fetchHabitsForDateJson = await fetchHabitsForDate.json()
         setHabitData(fetchHabitsForDateJson)
@@ -78,7 +78,7 @@ function TodaysActivitiesInOrder(){
         let day = dateClicked.getDate() 
         let token = localStorage.getItem('token')
         // make a fetch to site 
-        let fetchDailyHabitsForDate = await fetch(`http://shrouded-ravine-06737.herokuapp.com/habits/daily_habits/${year}/${month}/${day}/`,{
+        let fetchDailyHabitsForDate = await fetch(`https://shrouded-ravine-06737.herokuapp.com/habits/daily_habits/${year}/${month}/${day}/`,{
             headers:{ Authorization: `JWT ${token}`}})
         let fetchDailyHabitsForDateJson = await fetchDailyHabitsForDate.json()
         setHabitDaily(fetchDailyHabitsForDateJson)

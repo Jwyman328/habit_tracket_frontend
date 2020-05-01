@@ -7,7 +7,7 @@ import React from 'react';
     const createAHabitWithPost = async (formData, navigate) => {
         let formDataJson = JSON.stringify(formData)
         let token = localStorage.getItem('token')
-        let getResponse = await fetch('http://shrouded-ravine-06737.herokuapp.com/habits/create_habit',{method:'POST', mode: 'cors',body:formDataJson,
+        let getResponse = await fetch('https://shrouded-ravine-06737.herokuapp.com/habits/create_habit',{method:'POST', mode: 'cors',body:formDataJson,
         headers:{ Authorization: `JWT ${token}`,'Content-Type': 'application/json'}}
         );
         let jsonResponse = await getResponse.json()

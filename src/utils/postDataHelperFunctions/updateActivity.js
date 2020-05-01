@@ -14,7 +14,7 @@ async function updateActivity(activity_id) {
         let seconds = now.getSeconds()
         
         let token = localStorage.getItem('token')
-        let putResponse = await fetch(`http://shrouded-ravine-06737.herokuapp.com/habits/activities/update/${activity_id}/${year}/${month}/${day}/${hours}/${minutes}/${seconds}/`,{method:'PUT', mode: 'cors', //body:postDataJson
+        let putResponse = await fetch(`https://shrouded-ravine-06737.herokuapp.com/habits/activities/update/${activity_id}/${year}/${month}/${day}/${hours}/${minutes}/${seconds}/`,{method:'PUT', mode: 'cors', //body:postDataJson
         headers:{ Authorization: `JWT ${token}`,'Content-Type': 'application/json'}});
         
         let jsonResponse = await putResponse.json()

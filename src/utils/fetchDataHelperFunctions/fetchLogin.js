@@ -8,7 +8,7 @@ import React from 'react';
   const fetchLogin = async (loginUser,usernamePassword,urlExtension) => {
     let jsonUsername = JSON.stringify(usernamePassword);
     let loginResponse = await fetch(
-      `http://shrouded-ravine-06737.herokuapp.com/${urlExtension}`,
+      `https://shrouded-ravine-06737.herokuapp.com/${urlExtension}`,
       {
         method: "POST",
         mode: "cors",
