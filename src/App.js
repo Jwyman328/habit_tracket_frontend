@@ -41,7 +41,8 @@ function App() {
       <Router >
       <NavBar logOut={logOut} loggedIn={loggedIn} />
         <Switch>
-          <Route path='/login'> <LoginPage logIn = {logIn} loggedIn={loggedIn} /></Route>
+          <Route path='/' exact={true}> <LoginPage logIn = {logIn} loggedIn={loggedIn} /></Route>
+          <Route path='/login' exact={true}> <LoginPage logIn = {logIn} loggedIn={loggedIn} /></Route>
           <Route path='/signup'> <SignUpPage logIn = {logIn} loggedIn={loggedIn} /> </Route>
           {/*<Route path='/home'> <HomePage loggedIn={loggedIn}  /> </Route> */}
           <Route path='/create_habit'> <CreateHabit loggedIn={loggedIn}  /> </Route>
