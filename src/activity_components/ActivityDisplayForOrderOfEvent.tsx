@@ -2,11 +2,12 @@ import React, {useState, useEffect} from 'react';
 import PropTypes from 'prop-types';
 import { Card, Col } from 'react-bootstrap';
 import moment from 'moment'
+import { ActivityDisplayForOrderOfEventPropsModel } from '../models/props/ActivityDisplayForOrderOfEventPropsModel';
 
 
 
 
-function ActivityDisplayForOrderOfEvent(props) {
+function ActivityDisplayForOrderOfEvent(props:ActivityDisplayForOrderOfEventPropsModel) {
 
     const [displayStartTime, setDisplayStartTime] = useState('')
     const [displayEndTime, setDisplayEndTime] = useState('')
