@@ -1,14 +1,13 @@
 
 import React, { Dispatch } from 'react'
 import { tokenModel } from '../../models/authModels/tokenModel'
-import { timeTableHttpResponseDataModel } from '../../models/authModels/timeTableModels/timeTableHttpResponseDataModel'
+import { timeTableHttpResponseDataModel } from '../../models/timeTableModels/timeTableHttpResponseDataModel'
 
     /**
      * Get all activities for the Date selected.
      * @param {Date} dateClicked -- Date selected on the Calender widget
      */
     const fetchAllActivitiesForDateClicked = async (dateClicked:Date,setallTodaysActivities) => {
-        console.log(dateClicked,setallTodaysActivities, 'meat')
         let year:number = dateClicked.getFullYear()
         let month:number = dateClicked.getMonth() + 1 //js getMonth starts at 0
         let day:number = dateClicked.getDate() 
