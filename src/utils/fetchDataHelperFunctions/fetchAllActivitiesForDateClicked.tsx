@@ -7,7 +7,7 @@ import { timeTableHttpResponseDataModel } from '../../models/timeTableModels/tim
      * Get all activities for the Date selected.
      * @param {Date} dateClicked -- Date selected on the Calender widget
      */
-    const fetchAllActivitiesForDateClicked = async (dateClicked:Date,setallTodaysActivities) => {
+    const fetchAllActivitiesForDateClicked = async (dateClicked:Date,setallTodaysActivities:any) => {
         let year:number = dateClicked.getFullYear()
         let month:number = dateClicked.getMonth() + 1 //js getMonth starts at 0
         let day:number = dateClicked.getDate() 

@@ -1,0 +1,1 @@
+export type SetAllTodaysActivitiesDispatchModel = React.Dispatch<React.SetStateAction<never[]>>

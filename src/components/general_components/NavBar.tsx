@@ -2,6 +2,7 @@ import React from 'react';
 import {Link} from 'react-router-dom'
 import PropTypes from 'prop-types';
 import { Button, Navbar, Nav } from 'react-bootstrap';
+import { NavBarPropsModel } from '../../models/props/NavBarPropsModel';
 
 
 
@@ -11,7 +12,7 @@ import { Button, Navbar, Nav } from 'react-bootstrap';
  * @param {Bool} props.loggedIn - Representing if the user is considered logged in or out.
  * @param {Func} props.logOut - Make loggedIn False
  */
-function NavBar(props) {
+function NavBar(props:NavBarPropsModel) {
 
     const handleClick = () => {
         props.logOut();

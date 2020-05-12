@@ -3,8 +3,9 @@ import PropTypes from "prop-types";
 import { Button, Card, Col } from "react-bootstrap";
 import useGetActivityTimedCardState from "./customHooks/useGetActivityTimedCardState";
 import handleStopTimer from './utils/handleStopTimer';
+import { ActivityTimedPropsModel } from "../models/props/ActivityTimedPropsModel";
 
-function ActivityTimed(props) {
+function ActivityTimed(props:ActivityTimedPropsModel) {
   const {
     totalTime,
     setTotalTime,

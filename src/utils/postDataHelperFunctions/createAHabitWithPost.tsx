@@ -1,11 +1,12 @@
 import React from "react";
+
 import { createHabitFormDataModel } from "../../models/habitCalenderModels/createHabitFormDataModel";
 
 /**
  * Make a post request to create a Habit model with the form data.
  * Redirect the user to the calender page after the post has been made.
  */
-const createAHabitWithPost = async (formData:createHabitFormDataModel, navigate) => {
+const createAHabitWithPost = async (formData:createHabitFormDataModel, navigate:any) => {
   let formDataJson = JSON.stringify(formData);
   let token = localStorage.getItem("token");
   let getResponse = await fetch(
