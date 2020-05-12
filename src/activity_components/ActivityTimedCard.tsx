@@ -31,7 +31,7 @@ function ActivityTimed(props) {
               <Button className="btn btn-danger" onClick={() => handleStopTimer(props,setDisplayEndTime)}>
                 Stop
               </Button>
-            )}{" "}
+            )}
           </Card.Subtitle>
           <Card.Subtitle className="mb-2 align-text-left  d-flex">
             {props.total_time ? <p>Total Time: {props.total_time} </p> : null}

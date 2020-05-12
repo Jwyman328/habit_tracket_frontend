@@ -8,8 +8,8 @@ import moment from 'moment'
 
 function ActivityDisplayForOrderOfEvent(props) {
 
-    const [displayStartTime, setDisplayStartTime] = useState(undefined)
-    const [displayEndTime, setDisplayEndTime] = useState(undefined)
+    const [displayStartTime, setDisplayStartTime] = useState('')
+    const [displayEndTime, setDisplayEndTime] = useState('')
 
 
     useEffect(() => {
@@ -35,7 +35,7 @@ function ActivityDisplayForOrderOfEvent(props) {
                 <Card.Body className='checkedBackground'>
                     <Card.Title> {props.title}</Card.Title>
                     <Card.Title>StartTime {displayStartTime}</Card.Title>
-                    <Card.Subtitle className="mb-2 text-muted">{props.end_time ? <p>EndTime: {displayEndTime}</p>:null } </Card.Subtitle>
+                    <Card.Subtitle className="mb-2 text-muted">{props.end_time !== '' ? <p>EndTime: {displayEndTime}</p>:null } </Card.Subtitle>
                     <Card.Text>
                         total time {props.total_time}
                     </Card.Text>
