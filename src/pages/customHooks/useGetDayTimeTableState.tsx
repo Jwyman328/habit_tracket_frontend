@@ -8,7 +8,7 @@ function useGetDayTimeTableState() {
   let [firstTimedEventMinutes, setfirstTimedEventMinutes] = useState(undefined);
   let [lastTimedEventMinutes, setlastTimedEventMinutes] = useState(undefined);
   let [firstEventMinutes, setfirstEventMinutes] = useState(undefined);
-  let [allTodaysActivities, setallTodaysActivities] = useState(undefined);
+  let [allTodaysActivities, setallTodaysActivities] = useState([]);
   let [timeRows, setTimeRows] = useState<any>(undefined);
   let [eventRows, setEventRows] = useState<any>(undefined);
 

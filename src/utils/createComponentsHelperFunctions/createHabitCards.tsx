@@ -36,7 +36,7 @@ type HabitCardProps = {
 };
 
 const createHabitCards = (habitDaily: HabitDaily[], habitData:HabitData[], date:Date) => {
-  let habit_cards = habitDaily.map((item) => {
+   let habit_cards = habitDaily.length > 0? habitDaily.map((item) => {
     for (let generalhabit in habitData) {
       if (habitData[generalhabit].id == item.habit) {
         return (
@@ -58,7 +58,7 @@ const createHabitCards = (habitDaily: HabitDaily[], habitData:HabitData[], date:
         );
       }
     }
-  });
+  }) : null;
   return habit_cards;
 };
 

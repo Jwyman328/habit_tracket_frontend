@@ -81,7 +81,7 @@ function DayTimeTable({loggedIn}:LoggedIn) {
    * When timed activities change, update the time column.
    */
   useEffect(() => {
-    if (allTodaysActivities) {
+    if (allTodaysActivities.length > 0) {
       let NewtimeRows = generateTimeColumn(dayTimeTableState);
       setTimeRows(NewtimeRows);
     } else {
