@@ -1,9 +1,10 @@
 import React, {useState, useEffect} from 'react';
 import PropTypes from 'prop-types';
 import { Card } from 'react-bootstrap';
+import { ActivityCheckedProps } from '../models/props/ActivityCheckedProps';
 
 
-function ActivityChecked(props) {
+function ActivityChecked(props: ActivityCheckedProps) {
     const [displayStartTime, setDisplayStartTime] = useState('')
     const [displayEndTime, setDisplayEndTime] = useState('')
 
